@@ -1,0 +1,79 @@
+<div class="sidebar" id="sidebar">
+    <ul class="sidebar-links">
+        <li>
+            <a href="{{url_for('symptom_analysis')}}"
+            {% if request.path == url_for('symptom_analysis') %} 
+            class="active"
+            {% endif %}>
+
+            Symptom Analysis
+            
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('nutrition')}}"
+            {% if request.path == url_for('nutrition') %} 
+            class="active"
+            {% endif %}>
+
+            Nutrition
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('facts')}}"
+            {% if request.path == url_for('facts') %} 
+            class="active"
+            {% endif %}>
+
+            Facts
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('types')}}"
+            {% if request.path == url_for('types') %} 
+            class="active"
+            {% endif %}>
+
+            Types of pig
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('calendar')}}"
+            {% if request.path == url_for('calendar') %} 
+            class="active"
+            {% endif %}>
+
+            Simulate Calendar
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('news')}}"
+            {% if request.path == url_for('news') %} 
+            class="active"
+            {% endif %}>
+
+            News
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('price')}}"
+            {% if request.path == url_for('price') or  request.path == url_for('price_scrape')  %} 
+
+                class="active"
+
+            {% endif %}>
+
+            Price for kilo
+
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+

@@ -1,0 +1,153 @@
+{%extends 'base.html'%}
+
+{%block main%}
+    <div class="content">
+
+        {% if live_price == False  %}
+        <p>
+            The system have not look yet the price
+        </p>
+    {% else %}
+
+    <div id="loading-screen">
+        <p>Loading, please wait...</p>
+    </div>
+
+    {% if error %}
+        <div id="scrape-failed">
+            <i class="fa-solid fa-x fa-xl"></i>
+            {{error}}   
+        </div>  
+    {% endif %}
+
+        <div class="refresh">
+            <form action="/price/refresh" method="post" enctype="multipart/form-data" >              
+                <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
+                    <span>
+                        Refresh 
+                    </span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Pork with bones price -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="header">
+                        Pork with Bones
+                    </p>
+                    <p class="title">
+                        {{ pork_with_bones.price }}
+                    </p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">
+                        {{ pork_with_bones.header }}
+                    </p>
+                    <p class="header">Pork with Bones</p>    
+                    <p class="price">{{ pork_with_bones.price }}</p>
+
+                    <p>as of: {{ pork_with_bones.date }}</p>
+
+                    <div class="card-footer">
+                        For more information:
+                        <a href="{{ pork_with_bones.href }}">
+                            {{ pork_with_bones.a }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live weight -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="header">
+                        Live weight
+                    <p>
+                    <p class="title">
+                        {{ live_price.price }}
+                    </p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">
+                        {{ live_price.header }}
+                    </p>
+                    <p class="header">
+                        Live weight
+                    </p>    
+                    <p class="price">{{ live_price.price }}</p>
+                    <p>{{ live_price.date }}</p>
+
+                    <div class="card-footer">
+                        For more information:
+                        <a href="{{ live_price.href }}">
+                            {{ live_price.a }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pork kasim -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="header">
+                        Pork Kasim
+                    <p>
+                    <p class="title">
+                        {{ pork_kasim.price }}
+                    </p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">
+                        {{ pork_kasim.header }}
+                    </p>
+                    <p class="header">
+                        Pork Kasim
+                    </p>    
+                    <p class="price">{{ pork_kasim.price }}</p>
+                    <p>as of: {{ pork_kasim.date }}</p>
+
+                    <div class="card-footer">
+                        For more information:
+                        <a href="{{ pork_kasim.href }}">
+                            {{ pork_kasim.a }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    </div>
+
+    <script>
+        var refreshBtn = document.getElementById('scrape-button');
+        var loadingScreen = document.getElementById('loading-screen');
+
+        refreshBtn.addEventListener('click', ()=>{
+            loadingScreen.classList.toggle('show')
+            setTimeout(function() {
+                loadingScreen.classList.toggle('show')
+              }, 30000);
+        })
+
+        
+
+        setTimeout(function() {
+            var scrape_failed = document.getElementById("scrape-failed");
+            scrape_failed.style.transition = "opacity 0.5s";
+            scrape_failed.style.opacity = "0";
+            setTimeout(function() {
+              scrape_failed.parentNode.removeChild(scrape_failed);
+            }, 500);
+          }, 3000);
+          
+    </script>
+
+{%endblock%}
