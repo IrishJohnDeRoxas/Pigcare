@@ -20,8 +20,9 @@
         </div>  
     {% endif %}
 
+        
         <div class="refresh">
-            <form action="/price/refresh" method="post" enctype="multipart/form-data" >              
+            <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >              
                 <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
                     <span>
                         Refresh 
@@ -31,9 +32,9 @@
         </div>
         
         <!-- Pork with bones price -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
+        <div class=" price-card">
+            <div class="price-card-inner">
+                <div class="price-card-front">
                     <p class="header">
                         Pork with Bones
                     </p>
@@ -41,7 +42,7 @@
                         {{ pork_with_bones.price }}
                     </p>
                 </div>
-                <div class="flip-card-back">
+                <div class="price-card-back">
                     <p class="title">
                         {{ pork_with_bones.header }}
                     </p>
@@ -61,30 +62,30 @@
         </div>
 
         <!-- Live weight -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
+        <div class="price-card">
+            <div class="price-card-inner">
+                <div class="price-card-front">
                     <p class="header">
                         Live weight
                     <p>
                     <p class="title">
-                        {{ live_price.price }}
+                        {{ live_weight.price }}
                     </p>
                 </div>
-                <div class="flip-card-back">
+                <div class="price-card-back">
                     <p class="title">
-                        {{ live_price.header }}
+                        {{ live_weight.header }}
                     </p>
                     <p class="header">
                         Live weight
                     </p>    
-                    <p class="price">{{ live_price.price }}</p>
-                    <p>{{ live_price.date }}</p>
+                    <p class="price">{{ live_weight.price }}</p>
+                    <p>{{ live_weight.date }}</p>
 
                     <div class="card-footer">
                         For more information:
-                        <a href="{{ live_price.href }}">
-                            {{ live_price.a }}
+                        <a href="{{ live_weight.href }}">
+                            {{ live_weight.a }}
                         </a>
                     </div>
                 </div>
@@ -92,9 +93,9 @@
         </div>
 
         <!-- Pork kasim -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
+        <div class="price-card">
+            <div class="price-card-inner">
+                <div class="price-card-front">
                     <p class="header">
                         Pork Kasim
                     <p>
@@ -102,7 +103,7 @@
                         {{ pork_kasim.price }}
                     </p>
                 </div>
-                <div class="flip-card-back">
+                <div class="price-card-back">
                     <p class="title">
                         {{ pork_kasim.header }}
                     </p>
