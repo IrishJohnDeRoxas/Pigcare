@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2023-09-03T22:15:57.785Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.62" etag="gjqcCX7duo2H-giEx5tA" version="21.7.2" type="device">
+  <diagram name="Page-1" id="MhChmkDemOMAx-YvyBKB">
+    <mxGraphModel dx="4560" dy="2557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2023" pageHeight="1864" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-2" target="GsFJPJxur-lPa5HGVNwR-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-2" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 23px;&quot;&gt;Select &lt;br&gt;What to do&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="337" y="624" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;endSize=22;startSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-4" target="GsFJPJxur-lPa5HGVNwR-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-4" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 29px;&quot;&gt;User&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=3;strokeColor=default;fontFamily=Helvetica;fontSize=28;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="347" y="852" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-22" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-5" target="GsFJPJxur-lPa5HGVNwR-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-24" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-5" target="GsFJPJxur-lPa5HGVNwR-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-25" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=-0.014;entryY=0.502;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-5" target="GsFJPJxur-lPa5HGVNwR-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-26" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-5" target="GsFJPJxur-lPa5HGVNwR-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-5" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 29px;&quot;&gt;PigCare&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=3;strokeColor=default;fontFamily=Helvetica;fontSize=28;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="747" y="852" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-8" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;Symptom &lt;br&gt;Analysis&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="717" y="522" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-29" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=none;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-10" target="GsFJPJxur-lPa5HGVNwR-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-10" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;Facts&lt;/span&gt;&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1097" y="682" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-30" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=none;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-11" target="GsFJPJxur-lPa5HGVNwR-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-11" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;Ideal Months&lt;/span&gt;&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1097" y="982" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-31" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=none;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-12" target="GsFJPJxur-lPa5HGVNwR-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-12" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;Nutrition&lt;/span&gt;&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="717" y="1142" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-28" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.145;exitY=0.855;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.708;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=none;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-15" target="GsFJPJxur-lPa5HGVNwR-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-15" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;Information in disease or symptom&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="957" y="242" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-27" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0.855;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.292;entryY=0.176;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=none;endFill=0;startSize=22;endSize=22;strokeWidth=3;" edge="1" parent="1" source="GsFJPJxur-lPa5HGVNwR-16" target="GsFJPJxur-lPa5HGVNwR-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-16" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;First Aid, if any&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="517" y="242" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-17" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;Information in Nutrition&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="737" y="1472" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-18" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;Facts about pigs&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1486" y="532" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GsFJPJxur-lPa5HGVNwR-19" value="&lt;font style=&quot;font-size: 23px;&quot; face=&quot;Times New Roman&quot;&gt;Information in Ideal Month&lt;/font&gt;" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1486" y="1162" width="200" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

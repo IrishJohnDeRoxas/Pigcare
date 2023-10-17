@@ -3,6 +3,47 @@
 {%block main%}
     <div class="content">
         
+        <section class="common-types">
+            <div class="section-title">
+                <h1>
+                    Common Types in the Philippines
+                </h1>
+            </div>
+            <!-- TODO make 6 card for this query the 6 types-->
+            {% for common_type in common_types %}
+            <div class="transparent-card types-card">
+                <div class="image">
+                    <img src="{{common_type.img_url}}" alt="PigCare">
+                </div>
+                 <div class="card-body">
+                    <div class="title">
+                    {{common_type.title}}
+                    </div>
+                    <div class="desc" name="description">
+                        {{common_type.desc}}
+                    </div>
+                </div>
+                
+                <a class="action"  target="_blank" href="{{common_type.a}}">
+                    Find out more
+                    <span aria-hidden="true">
+                      →
+                    </span>
+                </a>
+            </div>
+            {% endfor %}
 
+        </section>
+        <!-- TODO bigger card 
+        <div>
+            According to <a href="https://agro4africa.com/pig-breeds/?fbclid=IwAR0t4CKA_wzvC1GZah-YfyyL2waDP6TzQDgvPuFU0SDcnqq-bhNHHxjsrDE">Agro4africa</a> 
+            there are 36 types.
+
+            Some pig breeds are best for ham and bacon, while others are for medical experiments. There are some breeds that are very rare and there are others that are very rampant.
+
+            This article will expose you to the different types of domestic pig breeds with their pictures and their individual characteristics
+            <br>
+            readmore...
+        </div> -->
     </div>
 {%endblock%}

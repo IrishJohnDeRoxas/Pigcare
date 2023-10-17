@@ -2,154 +2,81 @@
 
 {%block main%}
     <div class="content">
-        <div class="refresh">
-            <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >              
-                <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
-                    <span>
-                        Refresh 
-                    </span>
-                </button>
-            </form>
-        </div>
-
 
         <div class="news-container">
+             <!-- Latest News section -->
+        <section class="news">
             
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
-                   <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
-                   </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
-                </div>
+            <div class="section-title">
+                <h1>
+                    Latest News
+                </h1>
             </div>
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
-                   <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
-                   </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
+
+            {% for news in dbnews %}
+            <div class="transparent-card news-card">
+                <div class="image">
+                    <img src="{{news.img_url}}" alt="PigCare">
                 </div>
-            </div>
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
-                   <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
+                <div class="card-body">
+                   <a href="#"  target="_blank" >
+                     <div class="title">
+                       {{news.title}}
+                     </div>
                    </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
+                   <div class="date">
+                    {{news.date}}
+                   </div>
                 </div>
-            </div>
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
-                   <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
-                   </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
+                <p class="desc" name="description">
+                    {{news.desc}}
                    </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
-                </div>
+                <a class="action"  target="_blank" href="{{news.a}}">
+                    Find out more
+                    <span aria-hidden="true">
+                      →
+                    </span>
+                </a>
             </div>
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
+            {% endfor %}
+
+        </section>
+           <!-- Latest Article section -->
+        <section class="news">
+            
+            <div class="section-title">
+                <h1>
+                    Latest Article
+                </h1>
+            </div>
+
+            {% for article in dbarticles %}
+            <div class="transparent-card news-card">
+                <div class="image">
+                    <img src="{{article.img_url}}" alt="PigCare">
+                </div>
+                 <div class="card-body">
                    <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
+                     <div class="title">
+                       {{article.title}}
+                     </div>
                    </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
+                   <div class="date">
+                    {{article.date}}
+                   </div>
                 </div>
-            </div>
-            <div class="news-card">
-                <div class="image"></div>
-                 <div class="card-content">
-                   <a href="#">
-                     <span class="title">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     </span>
-                   </a>
-               
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               
-                   <a class="action" href="#">
-                     Find out more
-                     <span aria-hidden="true">
-                       →
-                     </span>
-                   </a>
+                <div class="desc" name="description">
+                    {{article.desc}}
                 </div>
+                <a class="action" href="{{article.a}}">
+                    Find out more
+                    <span aria-hidden="true">
+                      →
+                    </span>
+                </a>
             </div>
-        </div>
-        
-        
-        
+            {% endfor %}
+        </section>
+        </div>        
     </div>
 {%endblock%}

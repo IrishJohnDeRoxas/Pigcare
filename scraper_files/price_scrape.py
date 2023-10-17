@@ -31,7 +31,7 @@ for url in urls:
         header = doc.css.select_one("div.tt-u").text
         
         query = """
-                INSERT INTO prices (type, price, date_of_price, header, a, href) 
+                INSERT INTO prices (`type`, price, date_of_price, header, a, href) 
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
         values = ('pork_with_bones', price, date_price, header, title, url) 
@@ -61,7 +61,7 @@ for url in urls:
         title = div.css.select_one('h3.field-content').text
 
         query = """
-                INSERT INTO prices (type, price, date_of_price, header, a, href) 
+                INSERT INTO prices (`type`, price, date_of_price, header, a, href) 
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
         values = ('live_weight', price, date_price, header, title, url) 
@@ -85,7 +85,7 @@ for url in urls:
         header = doc.css.select_one("div.tt-u").text
         
         query = """
-                INSERT INTO prices (type, price, date_of_price, header, a, href) 
+                INSERT INTO prices (`type`, price, date_of_price, header, a, href) 
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
         values = ('pork_kasim', price, date_price, header, title, url) 

@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+{%block main%}
+    <div class="content">
+        <div class="silmulate-calendar-container">
+            <div class="section-title">
+                <h1>
+                    Simulate Calendar
+                </h1>
+            </div>
+            <div class="transparent-card silmulate-calendar-card">
+                <div class="card-body">
+                    <!-- TODO Use what the forms to handle info  -->
+                    {% if due_date %}
+                        <div class="due-date">
+                            <h1>2 weeks before: {{due_date.two_weeks}}</h1>
+                            <br>
+                            <h1>2 days before: {{due_date.two_days}}</h1>
+                            <br>
+                            <h1>Due Date: {{due_date.exact_date}}</h1>
+                        </div>
+                    {% else %}
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            {{ form.date_field.label }}
+                            {{ form.date_field() }}
+                            <br>
+                            {{ form.email_field.label }}
+                            {{ form.email_field() }}
+                            {{ form.submit_field() }}
+                        </form>    
+                    {%endif%}
+                </div>
+                <!-- <form action="/start_sending_emails"> -->
+                
+            </div>
+            
+        </div>
+    
+    </div>
+{%endblock%}

@@ -2,8 +2,31 @@
 
 {%block main%}
     <div class="content">
-        
-        
+        <div class="silmulate-calendar-container">
+            <div class="section-title">
+                <h1>
+                    Simulate Calendar
+                </h1>
+            </div>
+            <div class="transparent-card silmulate-calendar-card">
+                <div class="title">
+                    The typical pregnancy period of a female pig is 114 days from the date of service,
+                which can be either through artificial insemination or mating. This translates to 
+                three months, three weeks, and three days.
+                </div>
+               
+                
+                <div class="card-footer">
+                    <a href="{{url_for('send_mail')}}">
+                        <span aria-hidden="true">
+                            Click this if you want us to remind you about your pig's due date?
+                        </span>
+                    </a>
+                </div>
+                
+            </div>
+            
+        </div>
         
     </div>
 {%endblock%}

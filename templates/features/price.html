@@ -2,129 +2,130 @@
 
 {%block main%}
     <div class="content">
+        <div class="price-container">
 
-        {% if live_price == False  %}
-        <p>
-            The system have not look yet the price
-        </p>
-    {% else %}
+            {% if live_price == False  %}
+            <p>
+                The system have not look yet the price
+            </p>
+        {% else %}
 
-    <div id="loading-screen">
-        <p>Loading, please wait...</p>
-    </div>
+        <div id="loading-screen">
+            <p>Loading, please wait...</p>
+        </div>
 
-    {% if error %}
-        <div id="scrape-failed">
-            <i class="fa-solid fa-x fa-xl"></i>
-            {{error}}   
+        {% if error %}
+            <div id="scrape-failed">
+                <i class="fa-solid fa-x fa-xl"></i>
+                {{error}}   
+            </div>  
+        {% endif %}
+
+            
+            <div class="refresh">
+                <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >              
+                    <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
+                        <span>
+                            Refresh 
+                        </span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Pork with bones price -->
+            <div class=" price-card">
+                <div class="price-card-inner">
+                    <div class="price-card-front">
+                        <p class="header">
+                            Pork with Bones
+                        </p>
+                        <p class="title">
+                            {{ pork_with_bones.price }}
+                        </p>
+                    </div>
+                    <div class="price-card-back">
+                        <p class="title">
+                            {{ pork_with_bones.header }}
+                        </p>
+                        <p class="header">Pork with Bones</p>    
+                        <p class="price">{{ pork_with_bones.price }}</p>
+
+                        <p>as of: {{ pork_with_bones.date }}</p>
+
+                        <div class="card-footer">
+                            For more information:
+                            <a href="{{ pork_with_bones.href }}">
+                                {{ pork_with_bones.a }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live weight -->
+            <div class="price-card">
+                <div class="price-card-inner">
+                    <div class="price-card-front">
+                        <p class="header">
+                            Live weight
+                        <p>
+                        <p class="title">
+                            {{ live_weight.price }}
+                        </p>
+                    </div>
+                    <div class="price-card-back">
+                        <p class="title">
+                            {{ live_weight.header }}
+                        </p>
+                        <p class="header">
+                            Live weight
+                        </p>    
+                        <p class="price">{{ live_weight.price }}</p>
+                        <p>{{ live_weight.date }}</p>
+
+                        <div class="card-footer">
+                            For more information:
+                            <a href="{{ live_weight.href }}">
+                                {{ live_weight.a }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pork kasim -->
+            <div class="price-card">
+                <div class="price-card-inner">
+                    <div class="price-card-front">
+                        <p class="header">
+                            Pork Kasim
+                        <p>
+                        <p class="title">
+                            {{ pork_kasim.price }}
+                        </p>
+                    </div>
+                    <div class="price-card-back">
+                        <p class="title">
+                            {{ pork_kasim.header }}
+                        </p>
+                        <p class="header">
+                            Pork Kasim
+                        </p>    
+                        <p class="price">{{ pork_kasim.price }}</p>
+                        <p>as of: {{ pork_kasim.date }}</p>
+
+                        <div class="card-footer">
+                            For more information:
+                            <a href="{{ pork_kasim.href }}">
+                                {{ pork_kasim.a }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
         </div>  
-    {% endif %}
-
-        
-        <div class="refresh">
-            <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >              
-                <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
-                    <span>
-                        Refresh 
-                    </span>
-                </button>
-            </form>
-        </div>
-        
-        <!-- Pork with bones price -->
-        <div class=" price-card">
-            <div class="price-card-inner">
-                <div class="price-card-front">
-                    <p class="header">
-                        Pork with Bones
-                    </p>
-                    <p class="title">
-                        {{ pork_with_bones.price }}
-                    </p>
-                </div>
-                <div class="price-card-back">
-                    <p class="title">
-                        {{ pork_with_bones.header }}
-                    </p>
-                    <p class="header">Pork with Bones</p>    
-                    <p class="price">{{ pork_with_bones.price }}</p>
-
-                    <p>as of: {{ pork_with_bones.date }}</p>
-
-                    <div class="card-footer">
-                        For more information:
-                        <a href="{{ pork_with_bones.href }}">
-                            {{ pork_with_bones.a }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Live weight -->
-        <div class="price-card">
-            <div class="price-card-inner">
-                <div class="price-card-front">
-                    <p class="header">
-                        Live weight
-                    <p>
-                    <p class="title">
-                        {{ live_weight.price }}
-                    </p>
-                </div>
-                <div class="price-card-back">
-                    <p class="title">
-                        {{ live_weight.header }}
-                    </p>
-                    <p class="header">
-                        Live weight
-                    </p>    
-                    <p class="price">{{ live_weight.price }}</p>
-                    <p>{{ live_weight.date }}</p>
-
-                    <div class="card-footer">
-                        For more information:
-                        <a href="{{ live_weight.href }}">
-                            {{ live_weight.a }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pork kasim -->
-        <div class="price-card">
-            <div class="price-card-inner">
-                <div class="price-card-front">
-                    <p class="header">
-                        Pork Kasim
-                    <p>
-                    <p class="title">
-                        {{ pork_kasim.price }}
-                    </p>
-                </div>
-                <div class="price-card-back">
-                    <p class="title">
-                        {{ pork_kasim.header }}
-                    </p>
-                    <p class="header">
-                        Pork Kasim
-                    </p>    
-                    <p class="price">{{ pork_kasim.price }}</p>
-                    <p>as of: {{ pork_kasim.date }}</p>
-
-                    <div class="card-footer">
-                        For more information:
-                        <a href="{{ pork_kasim.href }}">
-                            {{ pork_kasim.a }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    {% endif %}
-
     </div>
 
     <script>
