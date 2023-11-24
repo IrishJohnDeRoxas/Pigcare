@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from bs4 import BeautifulSoup
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text, inspect, create_engine, select
@@ -12,8 +12,9 @@ import smtplib, time
 from datetime import datetime, timedelta
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
-from wtforms.validators import DataRequired, Email
-from wtforms.fields import DateField, EmailField, StringField
+from wtforms.validators import DataRequired, Email, Optional,ValidationError, InputRequired
+from wtforms.fields import DateField, EmailField, SelectMultipleField, SelectField
+from wtforms.widgets import CheckboxInput, ListWidget, RadioInput
 
 
 app = Flask(__name__)
@@ -46,18 +47,180 @@ def index():
   # Render the template with the page name as an argument
   return render_template("index.html")
 
-@app.route("/symptom_analysis")
+#---------------------Symptom Analysis-------------------------------
+class disease_name(db.Model):
+    __tablename__ = 'disease_name' # Change the table name
+    DN_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column (db.VARCHAR(255), unique=True)
+    
+class symptoms(db.Model):
+    __tablename__ = 'symptoms' # Change the table name
+    S_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    symptom = db.Column (db.VARCHAR(255), unique=True)
+
+class preventions(db.Model):
+    __tablename__ = 'preventions' # Change the table name
+    P_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    prevention = db.Column (db.VARCHAR(255), unique=True)
+
+class disease_and_symptom(db.Model):
+    __tablename__ = 'disease_and_symptom' # Change the table name
+    DS_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease_name =  db.Column (db.VARCHAR(255), nullable=False, unique=True)
+    symptom = db.Column (db.VARCHAR(255))
+
+class disease_and_prevention(db.Model):
+    __tablename__ = 'disease_and_prevention' # Change the table name
+    DP_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease_name =  db.Column (db.VARCHAR(255), nullable=False, unique=True)
+    prevention = db.Column (db.VARCHAR(255))
+
+class disease_and_desc(db.Model):
+    __tablename__ = 'disease_and_desc' # Change the table name
+    DD_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease_name =  db.Column (db.VARCHAR(255))
+    desc = db.Column (db.TEXT())
+    
+class disease_and_treatment(db.Model):
+    __tablename__ = 'disease_and_treatment' # Change the table name
+    Dt_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease_name =  db.Column (db.VARCHAR(255))
+    treatment = db.Column (db.TEXT())
+
+                   
+class symptoms_select(FlaskForm):
+    symptoms_field = SelectMultipleField('Symptoms', 
+                                         option_widget=CheckboxInput(), 
+                                         widget=ListWidget(prefix_label=False),
+                                         validators=[])
+    submit_field = SubmitField('Next')
+    
+    def validate_symptoms_field(self, symptoms_field):
+        if len(symptoms_field.data) == 0:
+            raise ValidationError("You must select at least one symptom")
+       
+class disease_select(FlaskForm):
+    
+    disease_field = SelectMultipleField('Disease', 
+                                option_widget=RadioInput(), 
+                                widget=ListWidget(prefix_label=False),
+                                validators=[])
+    submit_field = SubmitField('Next')
+    go_back = SubmitField('Go Back', render_kw={'formnovalidate': True,
+                                                'onclick': 'history.back()',
+                                                'type':False})
+    def validate_disease_field(self, disease_field):
+        if len(disease_field.data) == 0:
+            raise ValidationError("Select Atleast one Disease")
+
+@app.route('/symptom_analysis', methods=['GET', 'POST'])
 def symptom_analysis():
-  # No need to pass the request object explicitly
-  return render_template("features/symptom_analysis.html")
+    # Get user input symptom, proccess it into posible disease
+    form = symptoms_select()
+    choices_db = symptoms.query.all()
+    choices=[choice.symptom for choice in choices_db]
+    form.symptoms_field.choices = choices
+    
+    if form.validate_on_submit():
+        user_input_symptom = request.form.getlist('symptoms_field')
+        return redirect(url_for('possible_disease', user_input_symptom = user_input_symptom))
+        
+    return render_template('features/symptom_analysis.html', form=form)
+
+@app.route('/symptom_analysis/possible_disease', methods=['GET', 'POST'])
+def possible_disease():
+    # Get data from user input and get the posible diseasefrom db
+    user_input_symptom = request.args.getlist('user_input_symptom')
+    
+    possible_disease_db = []
+    for i in range(len(user_input_symptom)):
+        disease_name_db = disease_and_symptom.query.filter_by(symptom = user_input_symptom[i]).all()
+        for dn in disease_name_db:
+            possible_disease_db.append(dn.disease_name)
+      
+    return render_template('features/possible_disease.html', user_input_symptom = user_input_symptom,
+                           possible_disease_db = list(set(possible_disease_db)) )
+        
+@app.route('/symptom_analysis/possible_disease/<disease>/desc')
+def disease_desc(disease):
+ 
+    user_input_disease = disease
+    print(user_input_disease)
+    # TODO get the treatment and prevention for the user_input_disease
+    desc = disease_and_desc.query.filter_by(disease_name = user_input_disease).first()
+    treatments_query = disease_and_treatment.query.filter_by(disease_name = user_input_disease).all()
+    preventions_query = disease_and_prevention.query.filter_by(disease_name = user_input_disease).all()
+    print(preventions_query)
+    return render_template('features/disease_desc.html', desc= desc.desc,
+                           treatments_query=treatments_query, preventions_query=preventions_query )  
+ 
+#---------------------End of Symptom Analysis------------------------
+
+
+#---------------------Nutrition--------------------------------------
+
+class author_nutrition_info(db.Model):
+    __tablename__ = 'author_nutrition_info' # Change the table name
+    id = db.Column(db.Integer, primary_key=True)
+    title =  db.Column (db.String(500) ,nullable= False)
+    author =  db.Column (db.String(500) ,nullable= False)
+    author_desc =  db.Column (db.String(500) ,nullable= False)
+    
+class main_nutrition_info(db.Model):
+    __tablename__ = 'main_nutrition_info' # Change the table name
+    id = db.Column(db.Integer, primary_key=True)
+    header =  db.Column (db.String(300) ,nullable= False)
+    desc = db.Column(db.Text(16383), nullable=False)
+    
+class sub_nutrition_info(db.Model):
+    __tablename__ = 'sub_nutrition_info' # Change the table name
+    id = db.Column(db.Integer, primary_key=True)
+    sub_header =  db.Column (db.String(300) ,nullable= False)
+    sub_desc = db.Column(db.String(5000), nullable=False)
 
 @app.route("/nutrition")
 def nutrition():
-    return render_template("/features/nutrition.html")
+    """Get the data from db into db
+
+    Returns:
+        template: /features/nutrition.html"
+        contents and author query
+    """
+    
+    author = author_nutrition_info.query.all()
+    contents = main_nutrition_info.query.all()
+    return render_template("/features/nutrition.html", author = author, contents = contents)
+
+#---------------------End of Nutrition-------------------------------
+
+
+#---------------------Facts------------------------------------------
+
+class facts_about_pigs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title =  db.Column (db.String(300) ,nullable= False)
+    desc = db.Column(db.String(2000), nullable=False)
 
 @app.route("/facts")
 def facts():
-    return render_template("/features/facts.html")
+    """Get the data from db into Front End
+
+    Returns:
+        template: /features/facts.html"
+        data facts and facts_resume query
+    """
+    
+    facts =  facts_about_pigs.query.all()[3:]
+    facts_resume = facts_about_pigs.query.all()[:3]
+    
+    # facts origin url, index 0
+    # facts_resume origin url, index 1
+    
+    urls = ['https://www.coolkidfacts.com/facts-about-pigs/', 'https://kids.nationalgeographic.com/animals/mammals/facts/pig']
+    
+    return render_template("/features/facts.html", facts = facts, facts_resume = facts_resume, urls = urls)
+
+#---------------------End of Types-----------------------------------
 
 #---------------------Types------------------------------------------
 
@@ -81,7 +244,12 @@ class types_of_pigs(db.Model):
         
 @app.route("/types")
 def types():
-    # TODO get the 6 cards cards from db
+    """Get 6 common types in db, display it in Front-end
+
+    Returns:
+        template: /features/types.html
+        data: 6 common types query
+    """
     
     twenty_types = types_of_pigs.query.all()
     common_types = [twenty_types[0],twenty_types[1], twenty_types[2],
@@ -105,11 +273,23 @@ class get_user_info(FlaskForm):
     
 @app.route("/calendar")
 def calendar():
+    """Display information (hardcoded) about due date of pigs
+
+    Returns:
+        template: /features/calendar.html
+    """
     
     return render_template("/features/calendar.html")
 
 @app.route("/calendar/send_emails", methods=['GET', 'POST'])
 def send_mail():
+    """Prepare the emails to be sent 
+
+    Returns:
+        template: /features/send_mail.html
+        data: form 
+    """
+    
     form = get_user_info()
     due_date = None
     if form.validate_on_submit():
@@ -141,6 +321,9 @@ def send_mail():
     return render_template("/features/send_mail.html", form = form, due_date=due_date)
 
 def send_emails(receiver_email, date):
+    """ On click start new thread and send the emails, 2weeks, 2days notif """
+    
+    
     sender = 'pigcarethesis@gmail.com'
     password = 'vnku mpel fxzo wmxc'
     receiver = receiver_email
@@ -292,7 +475,34 @@ class scraped_news(db.Model):
        
 @app.route("/news")
 def news():
+    """Get news from db and show it in Front end
 
+    Returns:
+        template: /features/news.html
+        data: dbarticles and dbnews(query)
+    """
+    
+    dbarticles = scraped_news.query.filter_by(type = 'article').all()
+    dbnews = scraped_news.query.filter_by(type = 'news').all()
+    
+
+    db.session.commit()
+
+    return render_template("/features/news.html", dbnews = dbnews, dbarticles = dbarticles, )
+
+@app.route("/news/scrape-news")
+def scrape_news():
+    """On windows load in news, update the news card UI
+
+    Returns:
+        template: /features/scrape_news.html
+        data: dbarticles and dbnews(scraped and query it)
+    """
+    
+    today = datetime.today()
+
+    dbdate = db.session.query(scraped_news.date).first()
+    datetime_object = datetime.strptime(dbdate[0], "%B %d, %Y")
     # Check if url of the website being scrape is working.
     try: 
         urls = ['https://www.swineweb.com/', 'https://www.thepigsite.com/'] 
@@ -360,7 +570,7 @@ def news():
         dbnews = scraped_news.query.filter_by(type = 'news').all()
         db.session.commit()
 
-        return render_template("/features/news.html", dbnews = dbnews, dbarticles = dbarticles)
+        return render_template("/features/scrape_news.html", dbnews = dbnews, dbarticles = dbarticles,)
         
     except requests.exceptions.ConnectionError:
         
@@ -372,6 +582,10 @@ def news():
         return render_template("/features/news.html", dbnews = dbnews, dbarticles = dbarticles)
         
 #---------------------End of News---------------------------------------
+
+
+#---------------------Prices--------------------------------------------
+
 class prices(db.Model):
     id = db.Column(db.Integer,primary_key=True )
     type = db.Column(db.String(250), nullable=False)
@@ -380,9 +594,7 @@ class prices(db.Model):
     header = db.Column(db.String(150), nullable=False)
     a = db.Column(db.String(150), nullable=False)
     href = db.Column(db.String(1000), nullable=False)
-
-
-#---------------------Prices--------------------------------------------
+# TODO 2 query the prices better
 
 # Getting the information from db and storing in dictionary
 result = db.session.execute(text('SELECT * FROM prices'))
@@ -425,27 +637,12 @@ pork_kasim = {
 
 @app.route("/price")
 def price():
+    """Get the prices from db and pass it in UI
     
-    # engine = create_engine('mysql+pymysql://root:Biboy_321@localhost/pigcare')
-    # inspector = inspect(engine)
-    # table_exists = inspector.has_table('prices')
-
-    # if table_exists:
-    #     print('The table exists.')
-    # else:
-    #     print('The table does not exist.')
-    
-    # if isinstance(prices(), db.Model):
-    #     print('The class has been created.')
-    # else:
-    #     print('The class has not been created.')
-    
-    # try:
-    #     db.session.execute(text('SELECT 1'))
-    #     print('Connection successful!')
-    # except Exception as e:
-    #     print('Connection failed! Error:', e)
-    
+    Return:
+        template: /features/price.html
+        data: prices from db
+    """
     db.session.commit()
 
     return render_template("/features/price.html", pork_with_bones = pork_with_bones, 
@@ -454,7 +651,12 @@ def price():
 # Refresh button to scrape again the sites, and save in db. insert sql
 @app.route('/price/refresh', methods=['POST','GET'])
 def price_scrape():
+    """On refresh click this will run, scraping prices and updating UI
     
+    Returns:
+        template: /features/price.html
+        data: prices from internet
+    """
     
     urls = ['https://www.ceicdata.com/en/philippines/retail-price-selected-agricultural-commodities/retail-price-pork-with-bones-region-4a-batangas-city',
             'https://psa.gov.ph/livestock-poultry-iprs/swine/prices?fbclid=IwAR00Bu7aWKomFUmsuoMwD5SIMTKzxLGsn4YQNQsGlTFOmzv5sp8r0HzwacU',

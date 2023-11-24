@@ -29,7 +29,7 @@
                             Refresh 
                         </span>
                     </button>
-                </form>
+                </form>                
             </div>
             
             <!-- Pork with bones price -->
@@ -129,6 +129,10 @@
     </div>
 
     <script>
+        var scrape_button = document.getElementById('scrape-button')
+        scrape_button.addEventListener('click', ()=>{
+         modal.show()
+       })
         var refreshBtn = document.getElementById('scrape-button');
         var loadingScreen = document.getElementById('loading-screen');
 

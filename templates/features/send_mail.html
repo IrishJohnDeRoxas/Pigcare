@@ -10,8 +10,8 @@
             </div>
             <div class="transparent-card silmulate-calendar-card">
                 <div class="card-body">
-                    <!-- TODO Use what the forms to handle info  -->
                     {% if due_date %}
+                    <!-- TODO CSS, present data looking better  -->
                         <div class="due-date">
                             <h1>2 weeks before: {{due_date.two_weeks}}</h1>
                             <br>
@@ -20,6 +20,7 @@
                             <h1>Due Date: {{due_date.exact_date}}</h1>
                         </div>
                     {% else %}
+                    <!-- TODO CSS, make the form looking better  -->
                         <form method="POST">
                             {{ form.hidden_tag() }}
                             {{ form.date_field.label }}

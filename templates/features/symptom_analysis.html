@@ -2,13 +2,60 @@
 
 
 {%block main%}
-    <div class="content">
+<!-- Decision trees and Rule-Based system.... linear search algorithm -->
+
+    <div class="content symptom-analysis">
         <div class="search-container">
             <form action="#">
-              <input type="text" placeholder="Search.. " name="search">
+              <input id="search" type="text" placeholder="Search.. " name="search">
               <button type="submit"><i class="fa fa-search "></i></button>
             </form>
         </div>
-        
+        <!-- TODO Make next button that go to selected symptom to the next page (treatment) -->
+        <form  method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.symptoms_field.label }}
+            {% for subfield in form.symptoms_field %}
+                <div class="checkbox">
+                    {{ subfield(class_='checkbox-inline') }}
+                    {{ subfield.label.text }}
+                </div>
+            {% endfor %}
+            {{form.submit_field}}
+        </form>
     </div>
+
+        
+        {% for error in form.symptoms_field.errors %}
+          <span id="error-message" style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+    <!-- Searching algorithm and error-message hide -->
+    <script>
+        
+        var search_field = document.getElementById('search')
+        var symptoms = document.querySelectorAll(".checkbox")
+
+        search_field.addEventListener('keyup', ()=>{
+        symptoms.forEach(function (symptom){
+            let choices = symptom.textContent.toUpperCase().trim()
+            let input = search_field.value.toUpperCase()
+
+            if (choices.includes(input)){
+            symptom.style.display = 'block'
+            }
+            else{
+            symptom.style.display = 'none'
+            }
+        })
+        })
+
+        
+        const hideError = () => {
+            document.getElementById('error-message').style.display = 'none';
+          };
+          window.addEventListener('popstate', hideError);
+          setTimeout(hideError, 500);
+          
+    </script>
 {%endblock%}

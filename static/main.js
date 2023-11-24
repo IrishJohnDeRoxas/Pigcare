@@ -27,6 +27,11 @@
      main.classList.toggle('expand');
  })
 
- scrape_button.addEventListener('click', ()=>{
-    modal.show()
+
+ var go_back = document.getElementById('go_back')
+ var error = document.getElementById('symptoms_field_error')
+ go_back.addEventListener('click', ()=>{
+     history.back()
+     error.style.display = none;
+
  })

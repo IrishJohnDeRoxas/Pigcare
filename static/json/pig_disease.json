@@ -1,0 +1,136 @@
+{
+    "disease": [
+        {
+            "name": "Atrophic Rhinitis",
+            "desc": "Atrophic Rhinitis, commonly called Rhinitis, is caused by Bordetella and Pasteurella bacteria that are present in most swine herds. Toxins from moldy bedding and ammonia from wet bedding are thought to predispose pigs to Rhinitis. The disease can affect pigs as young as 1 week old, but is more common on newly weaned pigs.",
+            "treatment": [
+                "None - The goal should be to prevent pigs from getting the disease by vaccinating and providing a well-ventilated environment."
+            ],
+            "preventions": null,
+            "symptoms": [
+                "Sneezing",
+                "Snorting",
+                "Nasal Discharge",
+                "Occasional Bloody Nose",
+                "Watery Eyes",
+                "Crooked Snout"
+            ]
+        },
+        {
+            "name": "Erysipelas ",
+            "desc": "Erysipelas, sometimes called Diamond Skin Disease, is an infectious disease caused by the bacterium Erysipelothrix rhusiopathiae. The bacteria is present in up to half of the swine in the U.S. and is among the leading causes of carcass condemnations at slaughter facilities. The disease is spread by nose-to-nose contact, and in feces from infected swine or wild birds. Erysipelas is rarely seen in pigs younger than 8 weeks of age because they are protected by antibodies in the sow’s colostrum. It is most often seen in growing pigs near market weight, and young breeding stock. Erysipelas can affect the pig’s joints, leading to chronic arthritis.",
+            "treatment": [
+                "When you notice that your animal has any of the above symptoms, contact your vet immediately to determine the cause so a treatment plan can be started. Likely a veterinarian will prescribe penicillin, Erysipelothrix rhusiopathiae is very sensitive to penicillin. Treat affected pigs with injectable penicillin at 12-hour intervals for 4 consecutive days, or administer two doses of long-lasting penicillin 48 hours apart. Follow label directions and note pre-slaughter withdrawal times when using any medication or antibiotic."
+            ],
+            "preventions": [
+                "When buying pigs, ask the breeder if they have been vaccinated against Erysipelas.",
+                "Avoid mixing pigs from different sources.",
+                "Keep pens clean.",
+                "Minimize stress by providing comfortable living conditions, clean drinking water, etc.",
+                "Vaccinate pigs that have not been vaccinated, following label directions."
+            ],
+            "symptoms": [
+                "Fever",
+                "Rash on their back",
+                "Sit on haunches like a dog and are reluctant to move because of joint pain",
+                "May shift weight from foot to foot while standing because of joint pain"
+            ]
+        },
+        {
+            "name": "Exudative dermatitis (greasy pig disease)",
+            "desc": "This disease is caused by an infection with the Staphylococcus hyicus bacteria and it manifests through skin lesions. Mortality can occur due to greasy pig disease in severe cases that are left untreated. The lesions first appear as dark spots on the skin, which spread and become flaky, with a greasy feel.",
+            "treatment": [
+                "Antibiotics can be given orally, injectably, or topically. The type and dosage of antibiotic will depend on the severity of the infection and the type of bacteria that is causing it. Commonly used antibiotics for exudative dermatitis include amoxicillin, ceftiofur, and penicillin.",
+                "Topical treatments can help to cleanse the skin, remove crusts and scabs, and reduce inflammation. Commonly used topical treatments for exudative dermatitis include chlorhexidine solution, povidone iodine solution, and gentian violet solution."
+            ],
+            "preventions": [
+                "Avoid overcrowding pigs.",
+                "Provide pigs with fresh, clean water at all times.",
+                "Clean and disinfect pig pens and equipment regularly.",
+                "Isolate sick pigs from other pigs.",
+                "Vaccinate pigs against common diseases."
+            ],
+            "symptoms": [
+                "Scaling and crusting of the skin",
+                "Hair loss",
+                "Fever",
+                "Diarrhea",
+                "Dehydration",
+                "Difficulty breathing",
+                "Lameness"
+            ]
+        },
+        {
+            "name": "Coccidiosis",
+            "desc": "Coccidiosis is very common in suckling pigs, being caused by three types of the coccidia intercellular parasite. The main symptom is diarrhea, which can also be bloody and it occurs during between 10 and 21 days of age and up to 15 weeks of age. Acute cases can be treated with coccidiostats and fluid therapy. Because the intestinal wall can be damaged in some cases, secondary infections may occur.",
+            "treatment": [
+                "Anticoccidial drugs: These drugs are specifically designed to kill coccidia parasites.",
+                "Electrolytes: These fluids can help to prevent dehydration, which is a common complication of coccidiosis.",
+                "Antibiotics: Antibiotics may be used to treat secondary bacterial infections."
+            ],
+            "preventions": [
+                "Keep pigs clean and dry. Coccidia parasites thrive in moist environments.",
+                "Clean and disinfect pig pens and equipment regularly.",
+                "Provide pigs with a balanced diet.",
+                "Vaccinate pigs against coccidiosis."
+            ],
+            "symptoms": [
+                "Diarrhea",
+                "Weight loss",
+                "Lethargy",
+                "Dehydration",
+                "Rough hair coat",
+                "Pale gums",
+                "Abdominal pain"
+            ]
+        },
+        {
+            "name": "Swine Dysentery",
+            "desc": "Pigs that suffer from dysentery have diarrhea, with or without the presence of blood. This disease is caused by the bacteria Brachyspira hyodsenteriae. Pigs that suffer from dysentery in the post-weaning stage have reduced growth rate; in more severe cases sudden death can occur.",
+            "treatment": [
+                "Swine dysentery is typically treated with antibiotics. The type and dosage of antibiotic will depend on the severity of the infection and the type of bacteria that is causing it. Commonly used antibiotics for swine dysentery include lincomycin, tiamulin, and tylosin.",
+                "In addition to antibiotics, it is important to provide pigs with supportive care, such as fluids and electrolytes to prevent dehydration. Pigs with severe swine dysentery may need to be hospitalized for intensive care."
+            ],
+            "preventions": [
+                "Avoid overcrowding pigs.",
+                "Provide pigs with fresh, clean water at all times.",
+                "Clean and disinfect pig pens and equipment regularly.",
+                "Isolate sick pigs from other pigs.",
+                "Vaccinate pigs against common diseases.",
+                "Control rodents and other pests, which can carry the bacteria that causes swine dysentery."
+            ],
+            "symptoms": [
+                "Diarrhea",
+                "Fever",
+                "Lethargy",
+                "Dehydration",
+                "Weight loss",
+                "Pale gums",
+                "Abdominal pain"
+            ]
+        },
+        {
+            "name": "African Swine Fever (ASF)",
+            "desc": "Outbreaks occurred over the last years makes this disease more common than it used to be. African swine fever is caused by the Asfarviridae family of viruses, which are distinct from the viruses associated with Classical swine fever. There are 22 known types of the ASF virus. The ASF infection can be introduced through several ways: contaminated feed, tick, and lice bites, contaminated medical equipment and infected pigs.",
+            "treatment": [
+                "There is no specific treatment for African swine fever. Treatment is supportive and includes providing pigs with fluids, electrolytes, and pain relievers. In severe cases, pigs with ASF may need to be hospitalized for intensive care."
+            ],
+            "preventions": [
+                "The best way to prevent African swine fever is to avoid contact with infected pigs or their products. This includes avoiding the importation of live pigs, pork, and pork products from countries where ASF is present.",
+                "Maintaining good hygiene and sanitation practices in pig pens and equipment.",
+                "Controlling rodents and other pests, which can carry the ASF virus.",
+                "Vaccinating pigs against ASF. There are a number of different ASF vaccines available, but they are not all effective against all strains of the virus."
+            ],
+            "symptoms": [
+                "Fever",
+                "Lethargy",
+                "Loss of appetite",
+                "Difficulty breathing",
+                "Diarrhea",
+                "Vomiting",
+                "Cyanotic (blue) skin",
+                "Hemorrhages (bleeding) on the skin and internal organs"
+            ]
+        }
+    ]
+}

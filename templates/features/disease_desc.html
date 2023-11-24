@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+
+{%block main%}
+<!-- Decision trees and Rule-Based system.... linear search algorithm -->
+<button onclick="history.back()">Go Back</button>
+{{desc}}
+<br>
+{%for treatment in treatments_query%}
+    <h1 class="treatment">
+        {{treatment.treatment}}
+    </h1>
+{%endfor%}
+<br>
+{%for prevention in preventions_query%}
+    <h1 class="prevention">
+        {{prevention.prevention}}
+    </h1>
+{%endfor%}
+    
+{%endblock%}

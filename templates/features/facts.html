@@ -2,8 +2,52 @@
 
 {%block main%}
     <div class="content">
-        
+        <!-- TODO CSS, make the cards looking better -->
+        <div class="facts-container L-container">
+            <section class="facts">
+                <div class="section-title">
+                    <h1>
+                        Facts about pigs
+                    </h1>
+                </div>
+                <div class="L-transparent-card facts-card">
+                    {% for fact in facts_resume %}
+                        <div>
+                            <h3>
+                                {{fact.title}}:
+                            </h3>
 
+                            <span>
+                                {{fact.desc}}
+                            <span>
+                            
+                        </div>
+                    {%endfor%}
+                    <a class="action"  target="_blank" href="{{urls[1]}}">
+                        Find out more
+                        <span aria-hidden="true">
+                            →
+                        </span>
+                    </a>
+                </div>
+
+                {% for fact in facts %}
+                    <div class="L-transparent-card">
+                        <div>
+                            <h3>
+                                {{fact.title}}
+                            </h3>
+
+                            <h3>
+                                {{fact.desc}}
+                            </h3>
+                        </div>
+                    </div>
+                {%endfor%}
+
+            </section>
+            
+        </div>
         
     </div>
 {%endblock%}

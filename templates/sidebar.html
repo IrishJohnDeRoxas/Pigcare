@@ -1,9 +1,12 @@
 <div class="sidebar" id="sidebar">
+    <!-- TODO Check all the pages if the sidebar reacts accordingly -->
     <ul class="sidebar-links">
         <li>
             <a href="{{url_for('symptom_analysis')}}"
-            {% if request.path == url_for('symptom_analysis') %} 
-            class="active"
+            {% if request.path == url_for('symptom_analysis') or request.path == url_for('possible_disease')  %} 
+                class="active"
+            {%else%}
+                class="active"
             {% endif %}>
 
             Symptom Analysis
@@ -42,8 +45,10 @@
         </li>
         <li>
             <a href="{{url_for('calendar')}}"
-            {% if request.path == url_for('calendar') %} 
-            class="active"
+            {% if request.path == url_for('calendar') or request.path == url_for('send_mail')  %} 
+                class="active"
+            {%else%}
+                class="active"
             {% endif %}>
 
             Simulate Calendar
@@ -52,7 +57,7 @@
         </li>
         <li>
             <a href="{{url_for('news')}}"
-            {% if request.path == url_for('news') %} 
+            {% if request.path == url_for('news') or request.path == url_for('scrape_news') %} 
             class="active"
             {% endif %}>
 

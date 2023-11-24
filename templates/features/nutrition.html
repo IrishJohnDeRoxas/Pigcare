@@ -2,5 +2,39 @@
 
 {%block main%}
     <div class="content">
+        <!-- TODO 1 make cards large to display info from db -->
+        <div class="L-container nutrition-container">
+            <section class="nutrition">
+                <div class="section-title">
+                    <h1>
+                        {{author[0].title}}
+                    </h1>
+                    <h2>
+                        {{author[0].author}}
+                        {{author[0].author_desc}}
+                    </h2>   
+                </div>
+                
+                <a class="action"  target="_blank" href="">
+                    Find out more
+                    <span aria-hidden="true">
+                        →
+                    </span>
+                </a>
+                {%for content in contents%}
+                    <div class="L-transparent-card nutrition_card">
+                    
+                        <h1>
+                            {{content.header}}
+                        </h1>
+                        <br>
+                        <h2>
+                            {{content.desc}}
+                        </h2>
+                    
+                    </div>
+                {%endfor%}
+            </section>
+        </div>
     </div>
 {%endblock%}
