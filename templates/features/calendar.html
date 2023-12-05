@@ -2,32 +2,38 @@
 
 {%block main%}
     <div class="content">
-        <div class="silmulate-calendar-container">
-            <div class="section-title">
-                <h1>
-                    Simulate Calendar
-                </h1>
-            </div>
-            <!-- TODO add the ideal months to grow pigs -->
-            <div class="transparent-card silmulate-calendar-card">
-                <div class="title">
-                    The typical pregnancy period of a female pig is 114 days from the date of service,
-                which can be either through artificial insemination or mating. This translates to 
-                three months, three weeks, and three days.
+        <div class="L-container silmulate-calendar-container">
+            <section class="silmulate-calendar">
+                <div class="section-title">
+                    <h1>
+                        Simulate Calendar
+                    </h1>
                 </div>
-               
-                
-                <div class="card-footer">
-                    <a href="{{url_for('send_mail')}}">
+                <div class="L-transparent-card info-card">
+                    <div class="desc">
+                            The typical pregnancy period of a female pig is 114 days from the date of service,
+                        which can be either through artificial insemination or mating. This translates to 
+                        three months, three weeks, and three days.
+                    </div>
+                    <br>
+                    <div class="desc">
+                            According to Roy's Farm, you can start your pig farming project
+                        in early spring or in late summer 
+                        when the piglets grow their best 
+                    </div>
+                    <a class="action" target="_blank" href="{{info_source}}">
+                        Find out more
                         <span aria-hidden="true">
-                            Click this if you want us to remind you about your pig's due date?
+                          →
                         </span>
                     </a>
                 </div>
-                
-            </div>
-            
-        </div>
-        
+                <a id="send_mail"  href="{{url_for('send_mail')}}">
+                    <span aria-hidden="true">
+                        Click this if you want us to remind you about your pig's farrowing date?
+                    </span>
+                </a>
+            </section>            
+        </div>        
     </div>
 {%endblock%}

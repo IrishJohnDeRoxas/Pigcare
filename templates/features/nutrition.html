@@ -2,7 +2,6 @@
 
 {%block main%}
     <div class="content">
-        <!-- TODO 1 make cards large to display info from db -->
         <div class="L-container nutrition-container">
             <section class="nutrition">
                 <div class="section-title">
@@ -15,25 +14,27 @@
                     </h2>   
                 </div>
                 
-                <a class="action"  target="_blank" href="">
-                    Find out more
-                    <span aria-hidden="true">
-                        →
-                    </span>
-                </a>
+                
                 {%for content in contents%}
-                    <div class="L-transparent-card nutrition_card">
+                    <div class="L-transparent-card nutrition_card info-card">
                     
-                        <h1>
+                        <div class="title">
                             {{content.header}}
-                        </h1>
-                        <br>
-                        <h2>
+                        </div>
+                        <div class="desc">
                             {{content.desc}}
-                        </h2>
-                    
+
+                        </div>
                     </div>
                 {%endfor%}
+                <div class="group-btn">
+                    <a class="action"  target="_blank" href="{{info_source}}">
+                        Find out more
+                        <span aria-hidden="true">
+                            →
+                        </span>
+                    </a>
+                </div>
             </section>
         </div>
     </div>

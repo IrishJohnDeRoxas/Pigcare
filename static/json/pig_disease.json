@@ -14,7 +14,14 @@
                 "Occasional Bloody Nose",
                 "Watery Eyes",
                 "Crooked Snout"
+            ],
+            "image":[
+                "https://open.lib.umn.edu/app/uploads/sites/214/2018/08/Atrophic-rhinitis.png"
+            ],
+            "image_source":[
+                "Image source: Dr. Benoit Boivent"
             ]
+
         },
         {
             "name": "Erysipelas ",
@@ -34,6 +41,12 @@
                 "Rash on their back",
                 "Sit on haunches like a dog and are reluctant to move because of joint pain",
                 "May shift weight from foot to foot while standing because of joint pain"
+            ],
+            "image":[
+                "https://www.minipiginfo.com/uploads/5/4/3/0/54308893/883465.jpg"
+            ],
+            "image_source":[
+                ""
             ]
         },
         {
@@ -58,6 +71,12 @@
                 "Dehydration",
                 "Difficulty breathing",
                 "Lameness"
+            ],
+            "image":[
+                "https://www.msdvetmanual.com/-/media/manual/veterinary/images/c/h/r/chronic-exudative-epidermitis-pig-itgex902-cameron-sized.jpg?thn=0&sc_lang=en"
+            ],
+            "image_source":[
+                "Image source: Dr. Ranald D. A. Cameron"
             ]
         },
         {
@@ -82,6 +101,12 @@
                 "Rough hair coat",
                 "Pale gums",
                 "Abdominal pain"
+            ],
+            "image":[
+                "https://www.asian-agribiz.com/wp-content/uploads/2023/04/pkidac-header-696x522.jpg"
+            ],
+            "image_source":[
+                ""
             ]
         },
         {
@@ -107,6 +132,12 @@
                 "Weight loss",
                 "Pale gums",
                 "Abdominal pain"
+            ],
+            "image":[
+                "https://en.engormix.com/_next/image/?url=https%3A%2F%2Fimages.engormix.com%2FE_articles%2F2437_702.jpg&w=360&q=75"
+            ],
+            "image_source":[
+                ""
             ]
         },
         {
@@ -130,6 +161,12 @@
                 "Vomiting",
                 "Cyanotic (blue) skin",
                 "Hemorrhages (bleeding) on the skin and internal organs"
+            ],
+            "image":[
+                "https://agriculture.vic.gov.au/__data/assets/image/0008/536192/african-swine-fever-pigs.jpg"
+            ],
+            "image_source":[
+                "Image source: afrivip.org"
             ]
         }
     ]

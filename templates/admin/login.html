@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%block main%}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">{{ message }}</div>
+    {% endfor %}
+
+    <div class="transparent-card login-form-card">
+        <div class="title">
+            Admin Login
+        </div>
+        <form method="POST" class="admin-login">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                
+            {% if form.username.errors %}
+                <ul class="text-danger">
+                {% for error in form.username.errors %}
+                    <li class="alert">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {{ form.username(class="form-control", placeholder="Username") }}
+            </div>
+
+            <div class="form-group">
+            {% if form.password.errors %}
+                <ul class="text-danger">
+                {% for error in form.password.errors %}
+                    <li class="alert">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {{ form.password(class="form-control", placeholder="Password") }}
+            </div>
+
+            {{ form.submit(class="ui-btn btn-primary") }}
+        </form>
+    
+    </div>
+    
+{%endblock%}

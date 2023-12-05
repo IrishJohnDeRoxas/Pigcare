@@ -1,38 +1,48 @@
 {%extends 'base.html'%}
 
-
 {%block main%}
 <!-- Decision trees and Rule-Based system.... linear search algorithm -->
-
-    <div class="content symptom-analysis">
-        <div class="search-container">
-            <form action="#">
-              <input id="search" type="text" placeholder="Search.. " name="search">
-              <button type="submit"><i class="fa fa-search "></i></button>
-            </form>
-        </div>
-        <!-- TODO Make next button that go to selected symptom to the next page (treatment) -->
-        <form  method="POST">
-            {{ form.hidden_tag() }}
-            {{ form.symptoms_field.label }}
-            {% for subfield in form.symptoms_field %}
-                <div class="checkbox">
-                    {{ subfield(class_='checkbox-inline') }}
-                    {{ subfield.label.text }}
+    <div class="content">
+        <div class="L-container">
+            <section class="symptom-analysis">
+                <div class="section-title">
+                    Symptoms
+                    <div class="search-container">
+                        <form action="#">
+                        <input id="search" type="text" placeholder="Enter your symptom search" name="search">
+                        <button type="submit"><i class="fa fa-search "></i></button>
+                        </form>
+                    </div>
                 </div>
-            {% endfor %}
-            {{form.submit_field}}
-        </form>
+                
+                <div class="content symptom-analysis">
+                    <form  method="POST" novalidate>
+                        <div class="group-btn">
+                            {{form.submit_field(class_="ui-btn")}}
+                        </div>
+                        {{ form.hidden_tag() }}
+                        {% for subfield in form.symptoms_field %}
+                            <div class="checkbox">
+                                {{ subfield(class_='checkbox-inline') }}
+                                {{ subfield.label.text }}
+                            </div>
+                        {% endfor %}
+                        
+                    </form>
+                </div>
+            </section>
+        </div>
     </div>
+    {% if form.symptoms_field.errors %}
+        <div class="alert alert-warning">
+            {% for error in form.symptoms_field.errors %}
+                <span id="symptom_error">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-        
-        {% for error in form.symptoms_field.errors %}
-          <span id="error-message" style="color: red;">{{ error }}</span>
-        {% endfor %}
-
-    <!-- Searching algorithm and error-message hide -->
+    <!-- Searching algorithm -->
     <script>
-        
         var search_field = document.getElementById('search')
         var symptoms = document.querySelectorAll(".checkbox")
 
@@ -50,12 +60,8 @@
         })
         })
 
+
         
-        const hideError = () => {
-            document.getElementById('error-message').style.display = 'none';
-          };
-          window.addEventListener('popstate', hideError);
-          setTimeout(hideError, 500);
-          
+        
     </script>
 {%endblock%}

@@ -1,0 +1,35 @@
+main{
+    margin: 0;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-card{
+    justify-content: center;
+    align-content: center;
+}
+
+.login-form-card .title{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.admin-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 100px;
+
+}
+
+.form-control{
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    text-indent: 10px;
+}

@@ -15,23 +15,22 @@
    // check if the a element has a class active
    if (a.classList.contains("active")) {
      // change the li design as desired
-     // for example, change the background color to green
      li.classList.add('active')
    }
  });
  
- 
- closeBtn.addEventListener('click', ()=>{
-     sidebar.classList.toggle('close');
+ if(closeBtn){
+   closeBtn.addEventListener('click', ()=>{
+     sidebar.classList.toggle('hide');
      closeBtn.classList.toggle('collapse');
      main.classList.toggle('expand');
  })
+ }
 
 
- var go_back = document.getElementById('go_back')
- var error = document.getElementById('symptoms_field_error')
- go_back.addEventListener('click', ()=>{
-     history.back()
-     error.style.display = none;
-
- })
+ var alert = document.querySelector('div.alert')
+ if(alert){
+     window.onload = function(){
+         alert.classList.toggle('hide')
+     }
+ }

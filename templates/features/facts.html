@@ -2,7 +2,6 @@
 
 {%block main%}
     <div class="content">
-        <!-- TODO CSS, make the cards looking better -->
         <div class="facts-container L-container">
             <section class="facts">
                 <div class="section-title">
@@ -10,12 +9,12 @@
                         Facts about pigs
                     </h1>
                 </div>
-                <div class="L-transparent-card facts-card">
+                <div class="L-transparent-card fact-card pig-resume">
                     {% for fact in facts_resume %}
                         <div>
-                            <h3>
+                            <div class="title">
                                 {{fact.title}}:
-                            </h3>
+                            </div>
 
                             <span>
                                 {{fact.desc}}
@@ -32,15 +31,12 @@
                 </div>
 
                 {% for fact in facts %}
-                    <div class="L-transparent-card">
-                        <div>
-                            <h3>
+                    <div class="L-transparent-card fact-card info-card">
+                        <div class="title">
                                 {{fact.title}}
-                            </h3>
-
-                            <h3>
+                        </div>
+                        <div class="desc">
                                 {{fact.desc}}
-                            </h3>
                         </div>
                     </div>
                 {%endfor%}

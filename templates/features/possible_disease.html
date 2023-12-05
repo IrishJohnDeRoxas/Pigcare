@@ -3,29 +3,28 @@
 
 {%block main%}
 <!-- Decision trees and Rule-Based system.... linear search algorithm -->
-    <div class="content symptom-analysis">
-        {%for symptom in user_input_symptom %}
-            
-            <div class="symptom_desc">
-                <h3 class="title">
-                    {{symptom }}
-                </h3>
-            </div>
-        
-        {% endfor %}
-
-        {%for disease in possible_disease_db %}
-            
-            <a href="{{url_for('disease_desc', disease = disease)}}">
-                <div class="title">
-                {{disease}}
+    <div class="content ">
+        <div class="L-container">
+            <section class="possible-disease">
+                <div class="section-title">
+                    Possible disease/diseases
                 </div>
-            </a>
-        
-        {% endfor %}
-        <button id="go_back" >Go Back</button>
+                <div class="links">
+                    <ol>
+                        {%for disease in possible_disease_db %}
+                            <li>
+                                <a href="{{url_for('disease_desc', disease = disease)}}">
+                                    {{disease}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                    
+                </div>
+                <div class="group-btn">
+                    <button class="ui-btn" onclick="history.back()" >Go Back</button>
+                </div>
+            </section>
+        </div>
     </div>
-<script>
-
-</script>
 {%endblock%}

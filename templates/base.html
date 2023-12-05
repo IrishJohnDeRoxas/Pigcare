@@ -12,9 +12,23 @@
 <body>
 
     
-    {%include 'navbar.html'%}
-    {%include 'sidebar.html'%}
-
+    {%if selected == 'dashboard' %}
+      {%include 'admin/navbar.html'%}
+      {%include 'admin/sidebar.html'%}       
+      {%else%}
+        {%include 'navbar.html'%}
+        {%include 'sidebar.html'%}
+    {%endif%}
+    {%if selected == 'login'%}
+      <link rel="stylesheet" href="{{url_for ('static', filename = 'login.css') }}">  
+      <script>
+        var header = document.getElementById('main-header')
+        var sidebar = document.querySelector('.sidebar')
+        header.classList.toggle('hide')
+        sidebar.classList.toggle('hide')
+      </script>
+    {%endif%}
+    
     <main>
       {%block main%}
       {%endblock%}

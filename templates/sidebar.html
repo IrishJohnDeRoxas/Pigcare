@@ -1,77 +1,98 @@
 <div class="sidebar" id="sidebar">
-    <!-- TODO Check all the pages if the sidebar reacts accordingly -->
     <ul class="sidebar-links">
         <li>
-            <a href="{{url_for('symptom_analysis')}}"
-            {% if request.path == url_for('symptom_analysis') or request.path == url_for('possible_disease')  %} 
-                class="active"
+            <a href="{{ url_for('symptom_analysis') }}" class="
+                    {% if selected == 'symptom' or selected == 'desc' %}
+                        active
+                    {% endif %}
+                ">
+                Symptom Analysis
+            </a>
+        </li>
+        <li class="sub-links 
+            {% if selected != 'desc' %}
+                hide
             {%else%}
-                class="active"
-            {% endif %}>
-
-            Symptom Analysis
-            
+                active
+            {% endif %}
+        ">
+            <a href="#treatment-title">
+                Treatment
+            </a>
+        </li>
+        <li id="prevention" class="sub-links 
+            {% if selected != 'desc' %}
+                hide
+                {%else%}
+                active
+            {% endif %}
+        ">
+            <a href="#prevention-title">
+                Prevention
             </a>
         </li>
         <li>
-            <a href="{{url_for('nutrition')}}"
-            {% if request.path == url_for('nutrition') %} 
-            class="active"
-            {% endif %}>
+            <a href="{{url_for('nutrition')}}" class="
+                {% if selected == 'nutrition' %}
+                active
+                {% endif %}
+            ">
 
             Nutrition
 
             </a>
         </li>
         <li>
-            <a href="{{url_for('facts')}}"
-            {% if request.path == url_for('facts') %} 
-            class="active"
-            {% endif %}>
+            <a href="{{url_for('facts')}}" class="
+                {% if selected == 'facts' %}
+                    active
+                {% endif %}
+            ">
 
             Facts
 
             </a>
         </li>
         <li>
-            <a href="{{url_for('types')}}"
-            {% if request.path == url_for('types') %} 
-            class="active"
-            {% endif %}>
+            <a href="{{url_for('types')}}" class="
+                {% if selected == 'types' %}
+                    active
+                {% endif %}
+            ">
 
             Types of pig
 
             </a>
         </li>
         <li>
-            <a href="{{url_for('calendar')}}"
-            {% if request.path == url_for('calendar') or request.path == url_for('send_mail')  %} 
-                class="active"
-            {%else%}
-                class="active"
-            {% endif %}>
+            <a href="{{url_for('calendar')}}" class="
+                {% if selected == 'calendar' %}
+                    active
+                {% endif %}
+            ">
 
             Simulate Calendar
 
             </a>
         </li>
         <li>
-            <a href="{{url_for('news')}}"
-            {% if request.path == url_for('news') or request.path == url_for('scrape_news') %} 
-            class="active"
-            {% endif %}>
+            <a href="{{url_for('news')}}" class="
+                {% if selected == 'news' %}
+                    active                    
+                {% endif %}
+            ">
 
             News
 
             </a>
         </li>
         <li>
-            <a href="{{url_for('price')}}"
-            {% if request.path == url_for('price') or  request.path == url_for('price_scrape')  %} 
-
-                class="active"
-
-            {% endif %}>
+            <a href="{{url_for('price')}}" class="
+                {% if selected == 'price' %}
+                    active
+                {% endif %}
+            ">
+            
 
             Price for kilo
 

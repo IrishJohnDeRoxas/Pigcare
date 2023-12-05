@@ -2,20 +2,70 @@
 
 
 {%block main%}
-<!-- Decision trees and Rule-Based system.... linear search algorithm -->
-<button onclick="history.back()">Go Back</button>
-{{desc}}
-<br>
-{%for treatment in treatments_query%}
-    <h1 class="treatment">
-        {{treatment.treatment}}
-    </h1>
-{%endfor%}
-<br>
-{%for prevention in preventions_query%}
-    <h1 class="prevention">
-        {{prevention.prevention}}
-    </h1>
-{%endfor%}
-    
+<div class="content">
+    <div class="L-container nutrition-container">
+        <section class="disease-desc">
+            <div class="section-title">
+                <h1>
+                    {{user_input_disease}} - Description
+                </h1>
+                 
+            </div>
+                <div class="L-transparent-card info-card disease-desc-card " id="desc-card">
+                    <div class="desc">
+                        {{desc}}
+                    </div>
+                </div>
+                {%for img in img_query%}
+                <div class="L-transparent-card info-card disease-desc-card info-card-img ">
+                    
+                    <img src="{{img.img}}" alt="">
+
+                    {%if img.source%}
+                        <p>{{img.source}}</p>
+                    {%else%}
+                        <p>Image source: Not Available</p>
+                    {%endif%}
+                </div>
+                {%endfor%}
+                <div class="section-title" id="treatment-title">
+                    <h1>
+                        Treatment
+                    </h1>                    
+                </div>
+                {%for treatment in treatments_query%}
+                <div class="L-transparent-card info-card disease-desc-card">
+                    <div class="desc">
+                        {{treatment.treatment}}
+                    </div>
+                </div>
+                {%endfor%}
+
+                <div class="section-title" id="prevention-title">
+                    <h1>
+                        Prevention
+                    </h1>                            
+                </div>
+                {%for prevention in preventions_query%}
+                    {%if prevention == None %}
+                        <div class="section-title">
+                            <h1>
+                                No Prevention
+                            </h1>                            
+                        </div>
+                        {%else%}
+                        
+                        <div class="L-transparent-card info-card disease-desc-card">
+                            <div class="desc">
+                                {{prevention.prevention}}
+                            </div>
+                        </div>
+                    {%endif%}
+                {%endfor%}
+                <div class="group-btn">
+                    <button class="ui-btn" onclick="history.back()" >Go Back</button>
+                </div>
+        </section>
+    </div>
+</div>    
 {%endblock%}
