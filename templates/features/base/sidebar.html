@@ -1,0 +1,105 @@
+<div class="sidebar" id="sidebar">
+    <ul class="sidebar-links">
+        <li>
+            <a href="{{ url_for('symptom_analysis') }}" class="
+                    {% if selected == 'symptom' or selected == 'desc' %}
+                        active
+                    {% endif %}
+                ">
+                Symptom Analysis
+            </a>
+        </li>
+        <li class="sub-links 
+            {% if selected != 'desc' %}
+                hide
+            {%else%}
+                active
+            {% endif %}
+        ">
+            <a href="#treatment-title">
+                Treatment
+            </a>
+        </li>
+        <li id="prevention" class="sub-links 
+            {% if selected != 'desc' %}
+                hide
+                {%else%}
+                active
+            {% endif %}
+        ">
+            <a href="#prevention-title">
+                Prevention
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('nutrition')}}" class="
+                {% if selected == 'nutrition' %}
+                active
+                {% endif %}
+            ">
+
+            Nutrition
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('facts')}}" class="
+                {% if selected == 'facts' %}
+                    active
+                {% endif %}
+            ">
+
+            Facts
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('types')}}" class="
+                {% if selected == 'types' %}
+                    active
+                {% endif %}
+            ">
+
+            Types of pigs
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('calendar')}}" class="
+                {% if selected == 'calendar' %}
+                    active
+                {% endif %}
+            ">
+
+            Simulate Calendar
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('news')}}" class="
+                {% if selected == 'news' %}
+                    active                    
+                {% endif %}
+            ">
+
+            News
+
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('price')}}" class="
+                {% if selected == 'price' %}
+                    active
+                {% endif %}
+            ">
+            
+
+            Price for kilo
+
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+

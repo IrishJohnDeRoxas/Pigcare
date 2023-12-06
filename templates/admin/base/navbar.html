@@ -1,0 +1,19 @@
+<header class="header">
+    <nav class="navbar" id="navbar">
+        <!-- <i id="navbar-button" class="fa fa-bars"></i> -->
+        <div class="navbar-brand">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            <a href="{{url_for('dashboard')}}" class="navbar-logo">Pigcare - Admin</a>
+        </div>
+        <i class="fa-solid fa-arrow-left fa-xl" id="sidebar-close-btn"></i>
+        <div id="navbar-menu" class="navbar-collapse">
+        <ul class="navbar-nav">
+            <li>
+                <a href="{{url_for('logout')}}">
+                    Logout
+                </a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+</header>

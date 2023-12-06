@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{%extends 'features/base/base.html'%}
 
 
 {%block main%}
@@ -11,7 +11,7 @@
                 </div>
                 <div class="links">
                     <ol>
-                        {%for disease in possible_disease_db %}
+                        {%for disease in possible_diseases_db %}
                             <li>
                                 <a href="{{url_for('disease_desc', disease = disease)}}">
                                     {{disease}}

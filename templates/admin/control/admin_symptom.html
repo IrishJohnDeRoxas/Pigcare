@@ -1,0 +1,12 @@
+{%extends 'admin/base/base.html'%}
+{%block main%}
+  {% for message in get_flashed_messages() %}
+    <div class="alert ">{{ message }}</div>
+  {% endfor %}
+  <div class="content">
+    <div class="dashboard L-transparent-card">
+        symptom admin
+
+    </div>
+</div>
+{%endblock%}

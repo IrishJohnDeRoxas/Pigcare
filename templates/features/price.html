@@ -1,36 +1,21 @@
-{%extends 'base.html'%}
+{%extends 'features/base/base.html'%}
 
 {%block main%}
     <div class="content">
         <div class="price-container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert ">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-            {% if live_price == False  %}
-            <p>
-                The system have not look yet the price
-            </p>
-        {% else %}
-
-        <div id="loading-screen">
-            <p>Loading, please wait...</p>
-        </div>
-
-        {% if error %}
-            <div id="scrape-failed">
-                <i class="fa-solid fa-x fa-xl"></i>
-                {{error}}   
-            </div>  
-        {% endif %}
-
-            
-            <div class="refresh">
-                <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >              
-                    <button type="submit" name="scrape-button" value="Scrape Refresh" id="scrape-button" class="ui-btn">
-                        <span>
-                            Refresh 
-                        </span>
-                    </button>
-                </form>                
-            </div>
+            {%if form%}
+                <div class="refresh">
+                    <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >
+                        {{form.refresh(class='ui-btn')}}
+                    </form>
+                </div>
+            {%endif%}
             
             <!-- Pork with bones price -->
             <div class=" price-card">
@@ -123,37 +108,6 @@
                     </div>
                 </div>
             </div>
-
-        {% endif %}
         </div>  
     </div>
-
-    <script>
-        var scrape_button = document.getElementById('scrape-button')
-        scrape_button.addEventListener('click', ()=>{
-         modal.show()
-       })
-        var refreshBtn = document.getElementById('scrape-button');
-        var loadingScreen = document.getElementById('loading-screen');
-
-        refreshBtn.addEventListener('click', ()=>{
-            loadingScreen.classList.toggle('show')
-            setTimeout(function() {
-                loadingScreen.classList.toggle('show')
-              }, 30000);
-        })
-
-        
-
-        setTimeout(function() {
-            var scrape_failed = document.getElementById("scrape-failed");
-            scrape_failed.style.transition = "opacity 0.5s";
-            scrape_failed.style.opacity = "0";
-            setTimeout(function() {
-              scrape_failed.parentNode.removeChild(scrape_failed);
-            }, 500);
-          }, 3000);
-          
-    </script>
-
 {%endblock%}

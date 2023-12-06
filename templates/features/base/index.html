@@ -1,0 +1,20 @@
+{%extends 'features/base/base.html'%}
+
+{%block main%}
+    {% for message in get_flashed_messages() %}
+        <div class="alert ">{{ message }}</div>
+    {% endfor %}
+    <section class="index ">
+        <div class="L-transparent-card ">
+            <h1>Group 7: Pigcare</h1>
+            <p class="desc">This decision support system can help pig farmers diagnose diseases, optimize nutrition, and improve their operations. It does this by collecting data from credible 
+                sources and using it to provide farmers with information and recommendations. </p>
+            <ul>
+                <li>Developed By:</li>
+                <li>Irish John Deroxas</li>
+                <li>Jorgel Piñon</li>
+                <li>Ruben Sacdalan</li>
+            </ul>
+        </div>
+    </section>
+{%endblock%}

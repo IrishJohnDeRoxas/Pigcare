@@ -102,19 +102,16 @@ body {
 
 }
 
-/* header * {
-    text-decoration: none;
-    list-style: none;
-} */
-
 header {
     width: 100%;
     height: 60px;
     z-index: 1;
 }
+
 #main-header.hide{
     display: none;
 }
+
 main {
     position: sticky;
     display: flex;
@@ -126,7 +123,6 @@ main {
 
 main.expand {
     width: 100%;
-    /* border-radius: 30px 30px 30px 30px; */
 }
 
 .navbar {
@@ -142,7 +138,6 @@ main.expand {
     z-index: 1;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 .navbar .fa-arrow-left {
     color: #fff;
@@ -162,6 +157,7 @@ main.expand {
     color: var(--bs-gray-dark);
     text-decoration: none;
     list-style: none;
+    font-weight: 500;
 }
 
 .navbar.scrolled a,
@@ -319,9 +315,56 @@ li.active {
     background-color: var(--bs-warning);
 }
 
-
 .fa {
     color: var(--primary-light);
+}
+
+.ui-btn {
+    --btn-default-bg: rgb(41, 41, 41);
+    --btn-padding: 10px 90px;
+    --btn-hover-bg: rgb(51, 51, 51);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: var(--bs-white);
+    --default-btn-color: #fff;
+    --font-size: 10px;
+    --font-weight: 500;
+}
+
+.ui-btn {
+    padding: var(--btn-padding);
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    border: none;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+    border-radius: 2em;
+    margin-top: 5%;
+}
+
+.ui-btn span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+}
+
+.ui-btn:hover,
+.ui-btn:focus {
+    background: var(--btn-hover-bg);
+}
+
+.group-btn {
+    display: flex;
+    position: fixed;
+    bottom: 5%;
+    right: 80px;
 }
 
 .content {
@@ -331,31 +374,6 @@ li.active {
     justify-content: center;
     align-items: center;
     /* gap: 10px; */
-}
-
-.index {
-    height: 90% !important; 
-    color: var(--bs-gray-100);
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-}
-
-.index h1, p{
-    padding-bottom: 5%;
-}
-
-.index h3{
-    font-weight: 500;
-}
-
-.index li {
-    list-style-type: none;
-}
-
-.index p{
-    text-align: justify;
-    text-indent: 2em;
 }
 
 .L-container {
@@ -384,6 +402,8 @@ li.active {
 .L-transparent-card {
     width: 80%;
 }
+
+
 
 .transparent-card .image {
     object-fit: cover;
@@ -465,6 +485,241 @@ li.active {
     height: auto;
 }
 
+.card-footer {
+    position: absolute;
+    bottom: 10px;
+    font-weight: 300;
+}
+
+.card-footer a {
+    text-decoration: none;
+    color: var(--bs-black-rgb);
+    font-style: italic;
+}
+
+#desc-card{
+    width: 40%;
+}
+
+.card-body .date {
+    padding-top: 10px;
+}
+
+.index .L-transparent-card{
+    height: 90% !important;
+    width: 70%;
+    color: var(--bs-gray-100);
+    font-size: 1.75em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.index p{
+    padding-bottom: 5%;
+}
+
+.index h3{
+    font-weight: 500;
+}
+
+.index li {
+    list-style-type: none;
+}
+
+.index p{
+    text-align: justify;
+    text-indent: 2em;
+}
+
+.index ul{
+    margin-top: auto;
+}
+
+.symptom-analysis input[type="checkbox"] {
+    border: 2px solid var(--bs-gray);
+    height: 1.5em;
+    width: 1.5em;
+    box-sizing: border-box;
+    border-radius: 2px;
+    position: relative;
+}
+
+.symptom-analysis input[type="text"] {
+    border: 2px solid var(--bs-gray);
+    height: 28px;
+    width: 200px;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+
+.symptom-analysis #search::-webkit-input-placeholder {
+    color: #ccc;
+    padding-left: 4px;
+}
+
+.symptom-analysis .section-title {
+    display: flex;
+    font-weight: 500;
+    font-size: 3em;
+    height: fit-content;
+}
+
+.symptom-analysis .search-container {
+    margin-left: auto;
+}
+
+.checkbox {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+.possible-disease .links ol {
+    font-size: 2em;
+    color: var(--bs-dark);
+}
+
+.possible-disease a {
+    text-decoration: none;
+    color: var(--bs-dark);
+}
+
+.nutrition .section-title {
+    margin-bottom: 10%;
+}
+
+.nutrition_card {
+    overflow: auto;
+}
+
+.nutrition-container h2 {
+    font-size: 1em;
+    color: #141b2b;
+}
+
+.nutrition-container .action {
+    width: auto;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.types-container section {
+    margin-bottom: 0;
+}
+
+.common-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.common-types section {
+    margin-bottom: 0;
+}
+
+.types-card .desc {
+    margin: none;
+}
+
+.types-card .title {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 2.4em;
+    font-weight: 600;
+}
+
+.types-card .card-body {
+    display: grid;
+    grid-template-rows: 70px auto;
+}
+
+.types-card .action {
+    margin-top: auto;
+}
+
+
+.silmulate-calendar-container {
+    width: 100%;
+    height: 88%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(60deg, var(--bs-polish-pine) 30%, var(--bs-deep-puce) 98%);
+    border-radius: 2em;
+    margin: 2%;
+    padding: 2%;
+}
+
+.silmulate-calendar-container section {
+    margin-bottom: 0;
+}
+
+.silmulate-calendar-container .transparent-card {
+    display: flex;
+    justify-content: center;
+    height: 20%;
+}
+
+.silmulate-calendar .desc {
+    font-size: 2em;
+    color: var(--bs-gray-100);
+}
+
+.silmulate-calendar .action {
+    width: fit-content;
+    margin-left: auto;
+}
+
+.silmulate-calendar #send_mail {
+    margin-top: 10%;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 1.3em;
+    color: var(--bs-black-rgb);
+    font-style: italic;
+}
+
+
+.news-container {
+    width: 100%;
+    background: linear-gradient(60deg, var(--bs-polish-pine) 30%, var(--bs-deep-puce) 98%);
+    border-radius: 2em;
+    margin: 2%;
+}
+
+.news {
+    padding-block: 5%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.news-card {
+    max-width: 380px;
+    height: 550px;
+}
+
+.news-card .card-body {
+    display: grid;
+    grid-template-rows: auto 40px;
+}
+
+.news-card .title {
+    text-align: left;
+    overflow: auto;
+    max-height: 120px;
+}
+
 .price-container {
     width: 100%;
     height: auto;
@@ -475,7 +730,6 @@ li.active {
 }
 
 .price-card {
-    /* flex-grow: 1; */
     background-color: transparent;
     width: 350px;
     height: 480px;
@@ -490,7 +744,6 @@ li.active {
     transition: transform 1s 0.6s;
     transform-style: preserve-3d;
     padding: 10px;
-
 }
 
 .price-card:hover .price-card-inner {
@@ -538,7 +791,6 @@ li.active {
 .price-card-back .header {
     font-size: 1.7em;
     font-weight: 700;
-    /* padding-bottom: 20px; */
 }
 
 .price-card-back .title {
@@ -548,24 +800,11 @@ li.active {
     font-size: 1.6em;
     margin-inline: 10px;
     color: var(--bs-black-rgb);
-
 }
 
 .price-card-back .price {
     font-size: 1.7em;
     font-weight: 500;
-}
-
-.card-footer {
-    position: absolute;
-    bottom: 10px;
-    font-weight: 300;
-}
-
-.card-footer a {
-    text-decoration: none;
-    color: var(--bs-black-rgb);
-    font-style: italic;
 }
 
 .refresh {
@@ -576,91 +815,7 @@ li.active {
     z-index: 1;
 }
 
-.ui-btn {
-    --btn-default-bg: rgb(41, 41, 41);
-    --btn-padding: 10px 90px;
-    --btn-hover-bg: rgb(51, 51, 51);
-    --btn-transition: .3s;
-    --btn-letter-spacing: .1rem;
-    --btn-animation-duration: 1.2s;
-    --btn-shadow-color: rgba(0, 0, 0, 0.137);
-    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
-    --hover-btn-color: var(--bs-white);
-    --default-btn-color: #fff;
-    --font-size: 10px;
-    --font-weight: 500;
-}
 
-.ui-btn {
-    padding: var(--btn-padding);
-    color: var(--default-btn-color);
-    font: var(--font-weight) var(--font-size) var(--font-family);
-    background: var(--btn-default-bg);
-    border: none;
-    cursor: pointer;
-    transition: var(--btn-transition);
-    overflow: hidden;
-    box-shadow: var(--btn-shadow);
-    border-radius: 2em;
-    margin-top: 5%;
-}
-
-
-.ui-btn span::before {
-    box-sizing: border-box;
-    position: absolute;
-    content: "";
-    background: inherit;
-}
-
-.ui-btn:hover,
-.ui-btn:focus {
-    background: var(--btn-hover-bg);
-}
-
-
-.ui-btn:hover span::before,
-.ui-btn:focus span::before {
-    animation: chitchat linear both var(--btn-animation-duration);
-}
-
-.news-container {
-    width: 100%;
-    background: linear-gradient(60deg, var(--bs-polish-pine) 30%, var(--bs-deep-puce) 98%);
-    border-radius: 2em;
-    margin: 2%;
-}
-
-.news {
-    padding-block: 5%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-
-.news-card {
-    max-width: 380px;
-    height: 550px;
-}
-
-.news-card .card-body {
-    display: grid;
-    grid-template-rows: auto 40px;
-}
-
-.news-card .title {
-    text-align: left;
-    overflow: auto;
-    max-height: 120px;
-}
-
-.card-body .date {
-    padding-top: 10px;
-}
 
 .action {
     display: inline-flex;
@@ -695,84 +850,6 @@ li.active {
     font-size: 2em;
 }
 
-.silmulate-calendar-container {
-    width: 100%;
-    height: 88%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(60deg, var(--bs-polish-pine) 30%, var(--bs-deep-puce) 98%);
-    border-radius: 2em;
-    margin: 2%;
-    padding: 2%;
-}
-
-.silmulate-calendar-container section {
-    margin-bottom: 0;
-}
-
-.silmulate-calendar-container .transparent-card {
-    display: flex;
-    justify-content: center;
-    height: 20%;
-}
-
-.silmulate-calendar .desc {
-    font-size: 2em;
-    color: var(--bs-gray-100);
-}
-
-.silmulate-calendar .action {
-    width: fit-content;
-    margin-left: auto;
-}
-
-.silmulate-calendar #send_mail {
-    margin-top: 10%;
-    text-decoration: underline;
-    font-weight: 500;
-    font-size: 1.3em;
-    color: var(--bs-black-rgb);
-    font-style: italic;
-}
-
-.types-container section {
-    margin-bottom: 0;
-}
-
-.common-types {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.common-types section {
-    margin-bottom: 0;
-}
-
-.types-card .desc {
-    margin: none;
-}
-
-.types-card .title {
-    text-align: center;
-    padding-top: 10px;
-    font-size: 2.4em;
-    font-weight: 600;
-}
-
-.types-card .card-body {
-    display: grid;
-    grid-template-rows: 70px auto;
-}
-
-.types-card .action {
-    margin-top: auto;
-}
-
 section {
     padding-block: 5%;
     width: 100%;
@@ -802,83 +879,7 @@ section {
     font-weight: 500;
 }
 
-.nutrition .section-title {
-    margin-bottom: 10%;
-}
-
-.nutrition_card {
-    overflow: auto;
-}
-
-.nutrition-container h2 {
-    font-size: 1em;
-    color: #141b2b;
-}
-
-.nutrition-container .action {
-    width: auto;
-    height: 50px;
-    border-radius: 10px;
-}
-
-.checkbox {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 5px;
-    font-size: 1.4em;
-    font-weight: 400;
-}
-
-.symptom-analysis input[type="checkbox"] {
-    border: 2px solid var(--bs-gray);
-    height: 1.5em;
-    width: 1.5em;
-    box-sizing: border-box;
-    border-radius: 2px;
-    position: relative;
-}
-
-.symptom-analysis input[type="text"] {
-    border: 2px solid var(--bs-gray);
-    height: 28px;
-    width: 200px;
-    border-radius: 10px;
-    padding-left: 5px;
-}
-
-.symptom-analysis #search::-webkit-input-placeholder {
-    color: #ccc;
-    padding-left: 4px;
-}
-
-.symptom-analysis .section-title {
-    display: flex;
-    font-weight: 500;
-    font-size: 3em;
-    height: fit-content;
-}
-
-.symptom-analysis .search-container {
-    margin-left: auto;
-}
-
-.possible-disease .links ol {
-    font-size: 2em;
-    color: var(--bs-dark);
-}
-
-.possible-disease a {
-    text-decoration: none;
-    color: var(--bs-dark);
-}
-
-.group-btn {
-    display: flex;
-    position: fixed;
-    bottom: 5%;
-    right: 80px;
-}
-
-#desc-card{
-    width: 40%;
+.dashboard {
+    font-size: 1.6em;
+    color: var(--bs-gray-100);
 }

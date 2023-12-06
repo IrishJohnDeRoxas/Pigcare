@@ -1,0 +1,43 @@
+<div class="sidebar" id="sidebar">
+    <ul class="sidebar-links">
+        <li>
+            <a href="{{url_for('admin_symptom')}}" class="
+                    {% if selected == 'admin_symptom'  %}
+                        active
+                    {% endif %}
+                ">
+                Symptom Analysis
+            </a>
+        </li>
+        <li>
+            <a href="#" class="
+                    {% if selected == 'symptom' or selected == 'desc' %}
+                        active
+                    {% endif %}
+                ">
+                Nutrition
+            </a>
+        </li>
+        <li>
+            <a href="#" class="
+                    {% if selected == 'symptom' or selected == 'desc' %}
+                        active
+                    {% endif %}
+                ">
+                Facts
+            </a>
+        </li>
+        <li>
+            <a href="#" class="
+                    {% if selected == 'symptom' or selected == 'desc' %}
+                        active
+                    {% endif %}
+                ">
+                Types of pigs
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
