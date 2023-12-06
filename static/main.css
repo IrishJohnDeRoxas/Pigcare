@@ -605,15 +605,6 @@ li.active {
     margin-top: 5%;
 }
 
-.ui-btn span {
-    letter-spacing: var(--btn-letter-spacing);
-    transition: var(--btn-transition);
-    box-sizing: border-box;
-    position: relative;
-    background: inherit;
-    text-transform: uppercase;
-
-}
 
 .ui-btn span::before {
     box-sizing: border-box;
@@ -627,145 +618,10 @@ li.active {
     background: var(--btn-hover-bg);
 }
 
-.ui-btn:hover span,
-.ui-btn:focus span {
-    color: var(--hover-btn-color);
-}
 
 .ui-btn:hover span::before,
 .ui-btn:focus span::before {
     animation: chitchat linear both var(--btn-animation-duration);
-}
-
-@keyframes chitchat {
-    0% {
-        content: "#";
-    }
-
-    5% {
-        content: ".";
-    }
-
-    10% {
-        content: "^{";
-    }
-
-    15% {
-        content: "-!";
-    }
-
-    20% {
-        content: "#$_";
-    }
-
-    25% {
-        content: "№:0";
-    }
-
-    30% {
-        content: "#{+.";
-    }
-
-    35% {
-        content: "@}-?";
-    }
-
-    40% {
-        content: "?{4@%";
-    }
-
-    45% {
-        content: "=.,^!";
-    }
-
-    50% {
-        content: "?2@%";
-    }
-
-    55% {
-        content: "\;1}]";
-    }
-
-    60% {
-        content: "?{%:%";
-        right: 0;
-    }
-
-    65% {
-        content: "|{f[4";
-        right: 0;
-    }
-
-    70% {
-        content: "{4%0%";
-        right: 0;
-    }
-
-    75% {
-        content: "'1_0<";
-        right: 0;
-    }
-
-    80% {
-        content: "{0%";
-        right: 0;
-    }
-
-    85% {
-        content: "]>'";
-        right: 0;
-    }
-
-    90% {
-        content: "4";
-        right: 0;
-    }
-
-    95% {
-        content: "2";
-        right: 0;
-    }
-
-    100% {
-        content: "";
-        right: 0;
-    }
-}
-
-#loading-screen {
-    z-index: 2;
-    visibility: hidden;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100px;
-    background-color: var(--bs-info);
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-}
-
-#loading-screen.show {
-    visibility: visible;
-    opacity: 1;
-}
-
-#loading-screen.hide {
-    visibility: hidden;
-    opacity: 0;
-}
-
-#scrape-failed {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100px;
-    background-color: var(--bs-danger);
-    z-index: 2;
-    transition: all 0.5s;
 }
 
 .news-container {
