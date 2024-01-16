@@ -211,6 +211,78 @@ li.active {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.no-marker {
+    list-style-type: none;
+}
+  
+
+.modal {
+    display: none; 
+    opacity: 0;
+    visibility:hidden;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.5s;
+}
+
+.modal.show{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s;
+}
+.modal.hide{
+    display: none;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.modal-content {
+    border: 3px solid var(--bs-black-rgb);
+    border-radius: 20px;
+    background-color: var(--bs-body-bg-rgb);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: auto;
+    color: #000;
+}
+
+.modal-group-btn{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 5%;
+    
+}
+.modal-group-btn .btn{
+    color: var(--bs-black-rgb);
+    border-color: var(--bs-black-rgb);
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .sidebar {
     background: var(--bs-dark);
     position: fixed;
@@ -319,6 +391,17 @@ li.active {
     color: var(--primary-light);
 }
 
+.group-btn {
+    display: flex;
+    position: fixed;
+    bottom: 5%;
+    right: 80px;
+    gap: 10px;
+}
+
+.group-btn a{
+    text-decoration: none;
+}
 .ui-btn {
     --btn-default-bg: rgb(41, 41, 41);
     --btn-padding: 10px 90px;
@@ -345,7 +428,7 @@ li.active {
     overflow: hidden;
     box-shadow: var(--btn-shadow);
     border-radius: 2em;
-    margin-top: 5%;
+    width: auto;
 }
 
 .ui-btn span::before {
@@ -360,16 +443,54 @@ li.active {
     background: var(--btn-hover-bg);
 }
 
-.group-btn {
-    display: flex;
-    position: fixed;
-    bottom: 5%;
-    right: 80px;
+.ui-btn a{
+    color: var(--bs-white);
+    text-decoration: none;
 }
+
+.btn{    
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(219, 218, 218);
+    border-style: solid;
+    background-color: transparent;
+    border-color: rgb(219, 218, 218);
+    width: auto;
+    height: 30px;
+    transition: 0.2s ease;
+    text-transform: uppercase;
+    border-width: 2px;
+    font-weight: 500;
+    font-size: 13px !important;
+    letter-spacing: 2px;
+    padding: 0 10px 0 10px;
+}
+.btn:hover {
+    color: var(--bs-info-rgb);
+    border-color:var(--bs-info-rgb);
+} 
+.btn a{
+    color: var(--default-btn-color);
+    text-decoration: none;
+}
+
+.btn:active {
+    letter-spacing: 0px;
+}
+
+.delete-btn:hover {
+    color: var(--bs-danger);
+    border-color: var(--bs-danger);
+} 
+
+.edit-btn:hover {
+    color: var(--bs-warning);
+    border-color: var(--bs-warning);
+} 
 
 .content {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -403,8 +524,6 @@ li.active {
     width: 80%;
 }
 
-
-
 .transparent-card .image {
     object-fit: cover;
     width: 100%;
@@ -434,6 +553,9 @@ li.active {
 
 .transparent-card .action {
     text-decoration: none;
+    margin-top: auto;
+    margin-left: auto;
+    width: fit-content;
 }
 
 .transparent-card .desc {
@@ -458,6 +580,7 @@ li.active {
 
 .info-card {
     height: auto;
+    width: 65%;
 }
 
 .info-card .title {
@@ -467,14 +590,15 @@ li.active {
 
 .info-card .desc {
     /* margin-top: 5%; */
-    font-size: 1.3em;
+    font-size: 1.9em;
     font-weight: 400;
     text-align: justify;
     text-indent: 2em;
+    color: var(--bs-gray-100);
 }
 
 .info-card-img {
-    width: 30%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -569,6 +693,57 @@ li.active {
     margin-left: auto;
 }
 
+.symptom-analysis .section-title{
+    padding-bottom: 10px;
+    font-size: 1.7em;
+}
+
+.option-1{
+    cursor: pointer;
+    padding: 4px;
+    border: 2px solid;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.option-1.active{
+    border: none;
+    border-radius: 0;
+}
+.option-1-value.hide{
+    display: none;
+    text-decoration: none;
+}
+
+
+.option-1-value.hide{
+    display: none;
+    text-decoration: none;
+}
+
+.option-2{
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 10px;
+}
+.option-2.active{
+    border: 2px solid;
+    border-radius: 20px;
+}
+
+.option-2-value{
+    display: flex;
+    width: 88%;
+}
+
+.option-2-value.show{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+
 .checkbox {
     display: flex;
     gap: 10px;
@@ -587,8 +762,8 @@ li.active {
     color: var(--bs-dark);
 }
 
-.nutrition .section-title {
-    margin-bottom: 10%;
+.disease-img{
+    width: 200px;
 }
 
 .nutrition_card {
@@ -638,10 +813,6 @@ li.active {
     grid-template-rows: 70px auto;
 }
 
-.types-card .action {
-    margin-top: auto;
-}
-
 
 .silmulate-calendar-container {
     width: 100%;
@@ -664,11 +835,6 @@ li.active {
     display: flex;
     justify-content: center;
     height: 20%;
-}
-
-.silmulate-calendar .desc {
-    font-size: 2em;
-    color: var(--bs-gray-100);
 }
 
 .silmulate-calendar .action {
@@ -727,6 +893,7 @@ li.active {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-top: 20%;
 }
 
 .price-card {
@@ -828,7 +995,7 @@ li.active {
     background-color: #2563EB;
     padding: 4px 8px;
     border-radius: 4px;
-    width: 38%;
+    /* width: 38%; */
     margin-top: 10px;
     text-decoration: none;
 }
@@ -860,26 +1027,125 @@ section {
     gap: 40px;
 }
 
-.pig-resume {
-    height: 400px;
-}
-
-.pig-resume .title {
-    text-align: start;
-}
-
-.pig-resume .action {
-    margin-top: auto;
-    margin-left: auto;
-    width: auto;
-}
-
-.pig-resume span {
-    font-size: 1.5em;
-    font-weight: 500;
-}
-
 .dashboard {
-    font-size: 1.6em;
     color: var(--bs-gray-100);
+    margin-bottom: auto;
+    height: 100%;
+}
+
+.dashboard form{
+    height: 100%;
+}
+
+
+.dashboard-add .group-btn{
+    font-size: 15px !important;
+}
+
+
+.dashboard-add .group-btn a{
+    text-decoration: none;
+}
+
+.dashboard-add form{
+    font-size: 20px;
+}
+.dashboard-add form input{
+    font-size: 15px;
+}
+
+.admin-group-btn{
+    position: relative; 
+    display: flex;
+    gap: 10px;  
+    align-self: center;
+}
+
+.admin-img-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-disease-img{
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+.admin-disease-img img{
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.admin-disease-img .fa-x{
+    color: var(--bs-gray-800);
+    cursor: pointer;
+    font-weight: 900;
+    margin-left: auto;
+    transition: all 0.5s;
+}
+.admin-disease-img .fa-x:hover{
+    color: var(--bs-black-rgb);
+}
+
+.post{
+    font-size: 1.29em;
+    margin-left: 2%;
+}
+
+.post-content{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 10px;
+}
+
+input{
+    border: 2px solid var(--bs-body-color);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input:focus {
+    border-color:4px var(--bs-blue);
+    outline: none;
+}
+
+.input-author{
+    width: 40%;
+}
+
+.input-header{
+    width: 70%;
+}
+
+textarea{
+    font-family: var(--bs-body-font-family);
+    padding: 10px 12px 5px 12px;
+
+}
+
+.textarea {
+    border: 2px solid var(--bs-body-color);
+    border-radius: 8px;
+    width: 100%;
+    height: 300px;
+    font-size: 15px;
+    font-family: var(--bs-body-font-family);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    resize: none; 
+    transition: all 0.3s;
+  }
+
+.textarea-medium{
+    width: 40%;
+    height: 100px;
+    font-size: 15px;
+}  
+
+.textarea:focus {
+    border-color:4px var(--bs-blue);
+    outline: none;
 }

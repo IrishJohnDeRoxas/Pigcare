@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user='root',
     passwd='Biboy_321',
-    database='pigcare'
+    database='pigcare2'
 )
 my_cursor = mydb.cursor()
 

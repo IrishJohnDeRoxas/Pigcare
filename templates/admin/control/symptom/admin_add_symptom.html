@@ -1,0 +1,106 @@
+{%extends 'admin/base/base.html'%}
+{%block main%}
+  {% for message in get_flashed_messages() %}
+    <div class="alert ">{{ message }}</div>
+  {% endfor %}
+
+  <section class="content">
+    <div class="section-title">
+        Add disease information
+      </div>
+    <div class="dashboard L-transparent-card">        
+
+        <form method="POST" enctype="multipart/form-data">
+          {{ form.csrf_token }}
+          {{ form.hidden_tag()}}
+          <div class="">           
+            {{form.disease.label}}
+            {{form.disease}}
+            <br>
+            <br>
+            {{form.desc.label}}
+            {{form.desc(class='textarea')}}                                  
+            <br>
+            <br>
+            {{form.symptoms.label}}
+            {{form.symptoms_choice(class='textarea-medium')}}
+            {{form.add_symptom_choice}}
+            {{form.edit_symptom_choice}}
+            {{form.delete_symptom_choice}}
+            {{form.symptoms(class='no-marker')}}
+            <br>
+            <br>
+            {{form.treatments.label}}
+            {{form.treatments_choice(class='textarea-medium')}}
+            {{form.add_treatment_choice}}
+            {{form.edit_treatment_choice}}
+            {{form.delete_treatment_choice}}
+            {{form.treatments(class='no-marker')}}
+            <br>
+            <br>
+            {{form.preventions.label}}
+            {{form.preventions_choice(class='textarea-medium')}}
+            {{form.add_prevention_choice}}
+            {{form.edit_prevention_choice}}
+            {{form.delete_prevention_choice}}
+            {{form.preventions(class='no-marker')}}
+            <br>
+            <br>    
+            {{form.image.label}}
+            {{form.image}}
+            <br>
+            <br>
+            {{form.img_credits}}
+            {{form.add_image}}
+            <br>
+            <br>
+            <div class="admin-img-container">
+              {% if image_filenames %}
+                {%for img_src in image_filenames %}
+                      <div class="admin-disease-img transparent-card">
+                          <i class="fa-solid fa-x" onclick="confirmDelete('{{ img_src }}')"></i>
+                          <img src="{{ url_for('static', filename='img/' + img_src ) }}" alt="" class="disease-img">     
+                      </div>     
+                      <div id="delete-modal-{{ img_src }}" class="modal">                        
+                          <div class="modal-content">
+                              <span class="close" onclick="confirmDelete('{{ img_src }}')">&times;</span>
+                              <p>Are you sure you want to delete this image?</p>
+                              <button>
+                                  <a href="{{url_for('delete_image_symptom', filename=img_src, filename_credits_dict = filename_credits_dict)}}" a>
+                                      Delete
+                                  </a>
+                              </button>
+                              <span onclick="confirmDelete('{{ img_src }}')">
+                                  Cancel
+                              </span>
+                          </div>
+                      </div>
+                  {%endfor%}                               
+              {% endif %}
+            </div>
+            
+            
+          </div>
+
+          <div class="group-btn">
+            {{form.submit_all(class="ui-btn")}}
+              <a href="{{url_for('admin_symptom')}}" class="ui-btn">
+                Go back
+              </a>
+            {{form.clear(class="ui-btn")}}
+        </div>
+        </form>
+
+        {% if form.symptoms.errors %}
+            <div class="alert alert-warning">
+                <span id="symptom_error">{{ form.symptoms.errors }}</span>            
+            </div>
+        {% endif %}
+        {% if form.treatments.errors %}
+            <div class="alert alert-warning">
+                <span id="symptom_error">{{ form.treatments.errors }}</span>            
+            </div>
+        {% endif %}
+    </div>
+  </section>
+{%endblock%}

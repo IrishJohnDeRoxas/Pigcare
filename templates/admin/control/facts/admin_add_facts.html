@@ -1,0 +1,84 @@
+{%extends 'admin/base/base.html'%}
+{%block main%}
+  {% for message in get_flashed_messages() %}
+    <div class="alert ">{{ message }}</div>
+  {% endfor %}
+  <section class="content">
+    <div class="section-title">
+      Add Fact About Pig Post
+    </div>
+    <div class="dashboard dashboard-add L-transparent-card">
+        <form action="" method="POST"  enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag()}}
+            
+            <br>
+            {{form.author.label}}
+            {{form.author(class='input-author')}}
+            <br>
+            <br>
+            {{form.header.label}}
+            {{form.header(class='input-header')}}
+            <br>
+            <br>
+            {{form.desc.label}}
+            <br>
+            {{form.desc(class='textarea')}}
+            <br>
+            <br>
+            {{form.source.label}}
+            <br>
+            {{form.source(class='textarea textarea-medium')}}
+            <br>
+            <br>
+            {{form.date.label}}
+            {{form.date()}}
+            <br>
+            <br>    
+            {{form.image.label}}
+            {{form.image}}
+            <br>
+            <br>
+            {{form.img_credits.label}}
+            {{form.img_credits}}
+            <br>
+            {{form.add_image(class="btn")}}
+            <br>
+            <br>
+
+            <div class="admin-img-container"> 
+              {% if image_filename %}
+                <div class="admin-disease-img transparent-card">
+                    <i class="fa-solid fa-x" onclick="confirmDelete('{{ image_filename }}')"></i>
+                    <img src="{{ url_for('static', filename='img/' + image_filename ) }}" alt="" class="nutrition-img">     
+                </div>     
+                <div id="delete-modal-{{ image_filename }}" class="modal">                        
+                    <div class="modal-content">
+                        <span class="close" onclick="confirmDelete('{{ image_filename }}')">&times;</span>
+                        <p>Are you sure you want to delete this image?</p>
+                        <button>
+                            <a href="{{url_for('delete_image', image_filename=image_filename)}}" a>
+                                Delete
+                            </a>
+                        </button>
+                        <span onclick="confirmDelete('{{ image_filename }}')">
+                            Cancel
+                        </span>
+                    </div>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="group-btn">
+                {{form.submit_all(class="ui-btn")}}
+                  <a href="{{url_for('admin_facts')}}" class="ui-btn">
+                    Go back
+                  </a>
+                {{form.clear(class="ui-btn")}}
+            </div>
+        </form>
+
+    </div>
+
+  </section>
+{%endblock%}

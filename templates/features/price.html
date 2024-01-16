@@ -9,14 +9,6 @@
                 </div>
             {% endfor %}
 
-            {%if form%}
-                <div class="refresh">
-                    <form action="{{url_for('price_scrape')}}" method="post" enctype="multipart/form-data" >
-                        {{form.refresh(class='ui-btn')}}
-                    </form>
-                </div>
-            {%endif%}
-            
             <!-- Pork with bones price -->
             <div class=" price-card">
                 <div class="price-card-inner">
@@ -35,7 +27,7 @@
                         <p class="header">Pork with Bones</p>    
                         <p class="price">{{ pork_with_bones.price }}</p>
 
-                        <p>as of: {{ pork_with_bones.date }}</p>
+                        <p>as of: {{ pork_with_bones.date_of_price }}</p>
 
                         <div class="card-footer">
                             For more information:
@@ -66,7 +58,7 @@
                             Live weight
                         </p>    
                         <p class="price">{{ live_weight.price }}</p>
-                        <p>{{ live_weight.date }}</p>
+                        <p>{{ live_weight.date_of_price }}</p>
 
                         <div class="card-footer">
                             For more information:
@@ -97,7 +89,7 @@
                             Pork Kasim
                         </p>    
                         <p class="price">{{ pork_kasim.price }}</p>
-                        <p>as of: {{ pork_kasim.date }}</p>
+                        <p>as of: {{ pork_kasim.date_of_price }}</p>
 
                         <div class="card-footer">
                             For more information:

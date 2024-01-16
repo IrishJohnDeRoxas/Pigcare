@@ -3,10 +3,16 @@
 {%block main%}
 <!-- Decision trees and Rule-Based system.... linear search algorithm -->
     <div class="content">
-        <div class="L-container">
+        <div class="L-container symptom-analysis-container">
             <section class="symptom-analysis">
                 <div class="section-title">
-                    Symptoms
+                    <span class="option-1">
+                        Symptoms
+                    </span>
+                    
+                    <span class="option-2">
+                        Diseases
+                    </span>
                     <div class="search-container">
                         <form action="#">
                         <input id="search" type="text" placeholder="Enter your symptom search" name="search">
@@ -15,7 +21,7 @@
                     </div>
                 </div>
                 
-                <div class="content symptom-analysis">
+                <div class="content symptom-analysis option-1-value">
                     <form  method="POST" novalidate>
                         <div class="group-btn">
                             {{form.submit_field(class_="ui-btn")}}
@@ -30,7 +36,33 @@
                         
                     </form>
                 </div>
+                <div class="links option-2-value">
+                    {%for disease in disease_img_query %}                                            
+                        <div class="L-transparent-card info-card disease-desc-card info-card-img ">
+                            <h2>
+                                {{disease.disease}}
+                            </h2>
+                            <img src="{{ url_for('static', filename='img/' + disease.img ) }}" alt="" class="disease-img"> 
+
+                            {%if disease.img_credits%}
+                                <p>(Source: {{disease.img_credits}})</p>
+                            {%else%}
+                                <p>Image source: Not Available</p>
+                            {%endif%}
+                            <a class="action"  href="{{url_for('disease_desc', disease = disease.disease)}}">
+                                Find out more
+                                <span aria-hidden="true">
+                                    →
+                                </span>
+                            </a>
+                        </div>
+                    
+                    {% endfor %}
+                </div>
             </section>
+
+   
+      
         </div>
     </div>
     {% if form.symptoms_field.errors %}

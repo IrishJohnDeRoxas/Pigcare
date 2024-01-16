@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import sqlalchemy, requests, re
 from sqlalchemy.orm import sessionmaker   
 
-engine = sqlalchemy.create_engine('mysql+pymysql://root:Biboy_321@localhost/pigcare')
+engine = sqlalchemy.create_engine('mysql+pymysql://root:Biboy_321@localhost/pigcare2')
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -56,5 +56,5 @@ final_jpg_links = [link for link in all_jpg_links if link not in links_to_remove
 
 for i in range(20):
     new_row = types_of_pigs(title = final_titles[i], desc = descs[i].text, a = url, img_url = final_jpg_links[i])
-    # session.add(new_row)
-    # session.commit()
+    session.add(new_row)
+    session.commit()

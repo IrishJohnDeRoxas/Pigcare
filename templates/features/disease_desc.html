@@ -1,6 +1,4 @@
 {%extends 'features/base/base.html'%}
-
-
 {%block main%}
 <div class="content">
     <div class="L-container nutrition-container">
@@ -9,7 +7,6 @@
                 <h1>
                     {{user_input_disease}} - Description
                 </h1>
-                 
             </div>
                 <div class="L-transparent-card info-card disease-desc-card " id="desc-card">
                     <div class="desc">
@@ -19,10 +16,10 @@
                 {%for img in img_query%}
                 <div class="L-transparent-card info-card disease-desc-card info-card-img ">
                     
-                    <img src="{{img.img}}" alt="">
+                    <img src="{{ url_for('static', filename='img/' + img.img ) }}" alt="" class="disease-img"> 
 
-                    {%if img.source%}
-                        <p>{{img.source}}</p>
+                    {%if img.img_credits%}
+                        <p>Source: {{img.img_credits}}</p>
                     {%else%}
                         <p>Image source: Not Available</p>
                     {%endif%}

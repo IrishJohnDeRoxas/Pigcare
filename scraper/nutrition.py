@@ -3,7 +3,7 @@ import sqlalchemy as db
 import requests, re
 from sqlalchemy.orm import sessionmaker   
 
-engine = db.create_engine('mysql+pymysql://root:Biboy_321@localhost/pigcare')
+engine = db.create_engine('mysql+pymysql://root:Biboy_321@localhost/pigcare2')
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -81,14 +81,14 @@ for sub_content in sub_contents:
 # Adding the main content into db
 for i in range(len(headers_text)):
     main_nutrition_info_entry = main_nutrition_info(header = headers_text[i], desc = desc_text[i])
-#     session.add(main_nutrition_info_entry)
-#     session.commit()
+    session.add(main_nutrition_info_entry)
+    session.commit()
 
 # Adding the sub content into db
 for i in range(len(sub_headers_text)):
     sub_nutrition_info_entry = sub_nutrition_info(sub_header = sub_headers_text[i], 
                                                   sub_desc = sub_desc_text[i])
-#     session.add(sub_nutrition_info_entry)
-#     session.commit()
+    # session.add(sub_nutrition_info_entry)
+    # session.commit()
 
 # session.commit()

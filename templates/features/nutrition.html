@@ -1,40 +1,34 @@
 {%extends 'features/base/base.html'%}
-
 {%block main%}
     <div class="content">
-        <div class="L-container nutrition-container">
+        <div class="nutritions-container L-container">
             <section class="nutrition">
-                <div class="section-title">
-                    <h1>
-                        {{author[0].title}}
-                    </h1>
-                    <h2>
-                        {{author[0].author}}
-                        {{author[0].author_desc}}
-                    </h2>   
-                </div>
-                
-                
-                {%for content in contents%}
-                    <div class="L-transparent-card nutrition_card info-card">
-                    
-                        <div class="title">
-                            {{content.header}}
+                {% for nutrition in nutrition_posts %}
+                    <div class="section-title">
+                        <h1>
+                            {{nutrition.header}}
+                        </h1>
+                    </div>
+                    <div class="L-transparent-card nutrition-card info-card">
+                        <div>
+                            <p>By: {{nutrition.author}}, {{nutrition.date}}</p>
                         </div>
                         <div class="desc">
-                            {{content.desc}}
-
+                            {{nutrition.desc}}
+                        </div>
+                        <div>
+                            <p>Credits: {{nutrition.source}}</p>
                         </div>
                     </div>
+                    <div class="L-transparent-card info-card info-card-img ">
+                        <img src="{{ url_for('static', filename='img/' + nutrition.img ) }}" alt="" class="disease-img"> 
+                        {%if nutrition.img_credits%}
+                            <p>Source: {{nutrition.img_credits}}</p>
+                        {%else%}
+                            <p>Image source: Not Available</p>
+                        {%endif%}
+                    </div>
                 {%endfor%}
-                <div class="group-btn">
-                    <a class="action"  target="_blank" href="{{info_source}}">
-                        Find out more
-                        <span aria-hidden="true">
-                            →
-                        </span>
-                    </a>
-                </div>
             </section>
         </div>
     </div>

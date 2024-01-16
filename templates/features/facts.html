@@ -1,49 +1,35 @@
 {%extends 'features/base/base.html'%}
-
 {%block main%}
     <div class="content">
         <div class="facts-container L-container">
             <section class="facts">
-                <div class="section-title">
-                    <h1>
-                        Facts about pigs
-                    </h1>
-                </div>
-                <div class="L-transparent-card fact-card pig-resume">
-                    {% for fact in facts_resume %}
-                        <div>
-                            <div class="title">
-                                {{fact.title}}:
-                            </div>
-
-                            <span>
-                                {{fact.desc}}
-                            <span>
-                            
-                        </div>
-                    {%endfor%}
-                    <a class="action"  target="_blank" href="{{urls[1]}}">
-                        Find out more
-                        <span aria-hidden="true">
-                            →
-                        </span>
-                    </a>
-                </div>
-
-                {% for fact in facts %}
+                {% for fact in fact_posts %}
+                    <div class="section-title">
+                        <h1>
+                            {{fact.header}}
+                        </h1>
+                    </div>
                     <div class="L-transparent-card fact-card info-card">
-                        <div class="title">
-                                {{fact.title}}
+                        <div>
+                            <p>By: {{fact.author}}, {{fact.date}}</p>
                         </div>
                         <div class="desc">
-                                {{fact.desc}}
+                            {{fact.desc}}
+                        </div>
+                        <div>
+                            <p>Credits: {{fact.source}}</p>
                         </div>
                     </div>
+                    <div class="L-transparent-card info-card info-card-img ">
+                        <img src="{{ url_for('static', filename='img/' + fact.img ) }}" alt="" class="disease-img"> 
+                        {%if fact.img_credits%}
+                            <p>Source: {{fact.img_credits}}</p>
+                        {%else%}
+                            <p>Image source: Not Available</p>
+                        {%endif%}
+                    </div>
                 {%endfor%}
-
             </section>
-            
         </div>
-        
     </div>
 {%endblock%}

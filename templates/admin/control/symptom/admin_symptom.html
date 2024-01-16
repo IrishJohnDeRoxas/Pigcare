@@ -1,0 +1,90 @@
+{%extends 'admin/base/base.html'%}
+{%block main%}
+  {% for message in get_flashed_messages() %}
+    <div class="alert ">{{ message }}</div>
+  {% endfor %}
+  <section class="content">
+    <div class="section-title">
+      Handle information about diseases
+    </div>
+    <div class="dashboard L-transparent-card">
+      <div class="post">
+        <ol>
+          {%for disease in diseases%}
+              <li>
+                <div class="post-content">
+                  <div >
+                    {{disease.name}} 
+                  </div>
+                  <div class="admin-group-btn">
+                    <a href="{{ url_for('admin_edit_symptom', disease = disease.name) }}">
+                      <button class=" btn edit-btn "> 
+                        Edit
+                      </button>
+                    </a>                
+                    <button onclick="confirmDelete('{{disease.id}}')" class="btn delete-btn">
+                        Delete
+                    </button>  
+                  </div>
+                </div>
+              </li>      
+  
+              <div id="delete-modal-{{ disease.id }}" class="modal">                        
+                <div class="modal-content">
+  
+                    <span class="close" onclick="confirmDelete('{{ disease.id}}')">&times;</span>
+  
+                    <div>
+                      <h1>
+                        <i>
+                          Header: {{disease.header}}
+                        </i>
+                      </h1>
+                    </div>
+  
+                    <div class="desc">
+                      Description: {{disease.desc}}
+                      <br>
+                      By: {{disease.source}}
+                    </div>
+  
+                    <p>Are you sure you want to delete this post?</p>
+  
+                    <div class="modal-group-btn">
+                      <div class="delete-btn">
+                        <a href="{{url_for('delete_post', post_id=disease.id)}}" a>
+                          <button class=" btn delete-btn "> 
+                            Delete
+                          </button>
+                        </a>
+                      </div>
+  
+                      <button onclick="confirmDelete('{{disease.id }}')" class="btn">
+                          Cancel
+                      </button>
+                    </div>
+                </div>
+            </div>      
+          {%endfor%}
+        </ol>
+      </div>
+
+    </div>
+    <div class="group-btn">
+        <a href="{{url_for('admin_add_symptom')}}">
+          <div class="ui-btn">
+            Add Post 
+          </div>
+        </a>
+    </div>
+  </section>
+
+  <script>
+    var alert = document.querySelector('.alert')
+    if(alert){
+        window.onload = function(){
+            alert.classList.toggle('hide')
+        }
+    }
+  </script>
+{%endblock%}

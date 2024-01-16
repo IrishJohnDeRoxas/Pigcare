@@ -8,35 +8,61 @@
                 ">
                 Symptom Analysis
             </a>
-        </li>
+        </li>      
         <li>
-            <a href="#" class="
-                    {% if selected == 'symptom' or selected == 'desc' %}
+            <a href="{{url_for('admin_nutrition')}}" class="
+                    {% if selected == 'admin_nutrition'  %}
                         active
                     {% endif %}
                 ">
                 Nutrition
             </a>
-        </li>
+        </li>      
         <li>
-            <a href="#" class="
-                    {% if selected == 'symptom' or selected == 'desc' %}
+            <a href="{{url_for('admin_facts')}}" class="
+                    {% if selected == 'admin_facts'  %}
                         active
                     {% endif %}
                 ">
                 Facts
             </a>
-        </li>
+        </li>      
         <li>
-            <a href="#" class="
-                    {% if selected == 'symptom' or selected == 'desc' %}
+            <a href="{{url_for('admin_types')}}" class="
+                    {% if selected == 'admin_types'  %}
                         active
                     {% endif %}
                 ">
-                Types of pigs
+                Types of Pigs
             </a>
-        </li>
-
+        </li>      
+        <li>
+            <a href="{{url_for('admin_calendar')}}" class="
+                    {% if selected == 'admin_calendar'  %}
+                        active
+                    {% endif %}
+                ">
+                Simulate Calendar
+            </a>
+        </li>      
+        <li>
+            <a href="{{url_for('admin_news')}}" class="
+                    {% if selected == 'admin_news'  %}
+                        active
+                    {% endif %}
+                ">
+                News
+            </a>
+        </li>      
+        <li>
+            <a href="{{url_for('admin_price')}}" class="
+                    {% if selected == 'admin_price'  %}
+                        active
+                    {% endif %}
+                ">
+                Price for kilo
+            </a>
+        </li>      
     </ul>
 
 </div>

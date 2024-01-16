@@ -6,24 +6,24 @@
             <section class="common-types">
                 <div class="section-title">
                     <h1>
-                        Common Types in the Philippines
+                        Types of pigs
                     </h1>
                 </div>
-                {% for common_type in common_types %}
-                <div class="transparent-card types-card">
+                {% for post in type_posts %}
+                <div class="transparent-card types-card ">
                     <div class="image">
-                        <img src="{{common_type.img_url}}" alt="PigCare">
+                        <img src="{{ url_for('static', filename='img/' + post.img ) }}" alt="PigCare">
                     </div>
                      <div class="card-body">
                         <div class="title">
-                        {{common_type.title}}
+                        {{post.header}}
                         </div>
                         <div class="desc" name="description">
-                            {{common_type.desc}}
+                            {{post.desc}}
                         </div>
                     </div>
                     
-                    <a class="action"  target="_blank" href="{{common_type.a}}">
+                    <a class="action"  target="_blank" href="{{post.source}}">
                         Find out more
                         <span aria-hidden="true">
                           →

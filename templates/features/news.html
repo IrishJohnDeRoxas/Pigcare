@@ -1,89 +1,107 @@
 {%extends 'features/base/base.html'%}
 
 {%block main%}
+    
     <div class="content">
 
         <div class="news-container">
-             <!-- Latest News section -->
-        <section class="news">
-            
-            <div class="section-title">
-                <h1>
-                    Latest News
-                </h1>
-            </div>
-
-            {% for news in dbnews %}
-            <div class="transparent-card news-card">
-                <div class="image">
-                    <img src="{{news.img_url}}" alt="PigCare">
-                </div>
-                <div class="card-body">
-                   <a href="#"  target="_blank" >
-                     <div class="title">
-                       {{news.title}}
-                     </div>
-                   </a>
-                   <div class="date">
-                    {{news.date}}
-                   </div>
-                </div>
-                <p class="desc" name="description">
-                    {{news.desc}}
-                   </p>
-                <a class="action"  target="_blank" href="{{news.a}}">
-                    Find out more
-                    <span aria-hidden="true">
-                      →
+            <section class="news">
+                <div class="section-title">
+                    <span class="option-1">
+                        Latest International News
                     </span>
-                </a>
-            </div>
-            {% endfor %}
-
-        </section>
-           <!-- Latest Article section -->
-        <section class="news">
-            
-            <div class="section-title">
-                <h1>
-                    Latest Article
-                </h1>
-            </div>
-
-            {% for article in dbarticles %}
-            <div class="transparent-card news-card">
-                <div class="image">
-                    <img src="{{article.img_url}}" alt="PigCare">
-                </div>
-                 <div class="card-body">
-                   <a href="#">
-                     <div class="title">
-                       {{article.title}}
-                     </div>
-                   </a>
-                   <div class="date">
-                    {{article.date}}
-                   </div>
-                </div>
-                <div class="desc" name="description">
-                    {{article.desc}}
-                </div>
-                <a class="action" href="{{article.a}}">
-                    Find out more
-                    <span aria-hidden="true">
-                      →
+                    
+                    <span class="option-2">
+                        Latest Local News
                     </span>
-                </a>
-            </div>
-            {% endfor %}
-        </section>
+                </div>
+
+                <!-- Latest International News and Article -->
+                <div class="option-1-value news">
+                    {% for news in dbnews %}
+                    <div class="transparent-card news-card">
+                        <div class="image">
+                            <img src="{{news.img_url}}" alt="PigCare">
+                        </div>
+                        <div class="card-body">
+                        <a href="#"  target="_blank" >
+                            <div class="title">
+                            {{news.title}}
+                            </div>
+                        </a>
+                        <div class="date">
+                            {{news.date}}
+                        </div>
+                        </div>
+                        <p class="desc" name="description">
+                            {{news.desc}}
+                        </p>
+                        <a class="action"  target="_blank" href="{{news.a}}">
+                            Find out more
+                            <span aria-hidden="true">
+                            →
+                            </span>
+                        </a>
+                    </div>
+                {% endfor %}
+                {% for article in dbarticles %}
+                    <div class="transparent-card news-card">
+                        <div class="image">
+                            <img src="{{article.img_url}}" alt="PigCare">
+                        </div>
+                        <div class="card-body">
+                            <a href="#">
+                            <div class="title">
+                                {{article.title}}
+                            </div>
+                            </a>
+                            <div class="date">
+                            {{article.date}}
+                            </div>
+                        </div>
+                        <div class="desc" name="description">
+                            {{article.desc}}
+                        </div>
+                        <a class="action" href="{{article.a}}">
+                            Find out more
+                            <span aria-hidden="true">
+                                →
+                            </span>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="option-2-value news">
+                    {% for admin_news in admin_news_posts %}
+                    <div class="transparent-card news-card">
+                        <div class="image">
+                            <img src="{{admin_news.img}}" alt="PigCare">
+                        </div>
+                        <div class="card-body">
+                        <a href="#"  target="_blank" >
+                            <div class="title">
+                            {{admin_news.header}}
+                            </div>
+                        </a>
+                        <div class="date">
+                            {{admin_news.date}}
+                        </div>
+                        </div>
+                        <p class="desc" name="description">
+                            {{admin_news.desc}}
+                        </p>
+                        <a class="action"  target="_blank" href="{{admin_news.source}}">
+                            Find out more
+                            <span aria-hidden="true">
+                            →
+                            </span>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
         </div>        
     </div>
 
-    <script>
-        window.onload = function() {
-                window.location.href = "{{ url_for('scrape_news') }}";
-            };
-    </script>
     
 {%endblock%}

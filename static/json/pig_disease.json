@@ -24,7 +24,7 @@
 
         },
         {
-            "name": "Erysipelas ",
+            "name": "Erysipelas",
             "desc": "Erysipelas, sometimes called Diamond Skin Disease, is an infectious disease caused by the bacterium Erysipelothrix rhusiopathiae. The bacteria is present in up to half of the swine in the U.S. and is among the leading causes of carcass condemnations at slaughter facilities. The disease is spread by nose-to-nose contact, and in feces from infected swine or wild birds. Erysipelas is rarely seen in pigs younger than 8 weeks of age because they are protected by antibodies in the sow’s colostrum. It is most often seen in growing pigs near market weight, and young breeding stock. Erysipelas can affect the pig’s joints, leading to chronic arthritis.",
             "treatment": [
                 "When you notice that your animal has any of the above symptoms, contact your vet immediately to determine the cause so a treatment plan can be started. Likely a veterinarian will prescribe penicillin, Erysipelothrix rhusiopathiae is very sensitive to penicillin. Treat affected pigs with injectable penicillin at 12-hour intervals for 4 consecutive days, or administer two doses of long-lasting penicillin 48 hours apart. Follow label directions and note pre-slaughter withdrawal times when using any medication or antibiotic."
@@ -43,10 +43,10 @@
                 "May shift weight from foot to foot while standing because of joint pain"
             ],
             "image":[
-                "https://www.minipiginfo.com/uploads/5/4/3/0/54308893/883465.jpg"
+                ""
             ],
             "image_source":[
-                ""
+                "https://www.minipiginfo.com/erysipelas-and-mini-pigs.html"
             ]
         },
         {
@@ -106,7 +106,7 @@
                 "https://www.asian-agribiz.com/wp-content/uploads/2023/04/pkidac-header-696x522.jpg"
             ],
             "image_source":[
-                ""
+                "The Asian Agribiz Technical Team"
             ]
         },
         {
@@ -137,7 +137,7 @@
                 "https://en.engormix.com/_next/image/?url=https%3A%2F%2Fimages.engormix.com%2FE_articles%2F2437_702.jpg&w=360&q=75"
             ],
             "image_source":[
-                ""
+                "Image Source: Dr. Hank Harris"
             ]
         },
         {

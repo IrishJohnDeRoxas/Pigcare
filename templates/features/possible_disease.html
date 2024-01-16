@@ -13,8 +13,14 @@
                     <ol>
                         {%for disease in possible_diseases_db %}
                             <li>
-                                <a href="{{url_for('disease_desc', disease = disease)}}">
+                                <a href="">
                                     {{disease}}
+                                </a>
+                                <a class="action"  href="{{url_for('disease_desc', disease = disease)}}">
+                                    Find out more
+                                    <span aria-hidden="true">
+                                      →
+                                    </span>
                                 </a>
                             </li>
                         {% endfor %}

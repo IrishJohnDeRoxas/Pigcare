@@ -9,25 +9,27 @@
                         Simulate Calendar
                     </h1>
                 </div>
-                <div class="L-transparent-card info-card">
-                    <div class="desc">
-                            The typical pregnancy period of a female pig is 114 days from the date of service,
-                        which can be either through artificial insemination or mating. This translates to 
-                        three months, three weeks, and three days.
+                {% for simulate_calendar in simulate_calendar_posts %}
+                    <div class="L-transparent-card info-card">
+                        <div class="title">
+                            {{simulate_calendar.header}}
+                        </div>
+                        <div>
+                            <p>By: {{simulate_calendar.author}}, {{simulate_calendar.date}}</p> 
+                        </div>
+                        <div class="desc">
+                            {{simulate_calendar.desc}}
+                        </div>
+                        <a class="action" target="_blank" href="{{simulate_calendar.source}}">
+                            Find out more
+                            <span aria-hidden="true">
+                              →
+                            </span>
+                        </a>
                     </div>
-                    <br>
-                    <div class="desc">
-                            According to Roy's Farm, you can start your pig farming project
-                        in early spring or in late summer 
-                        when the piglets grow their best 
-                    </div>
-                    <a class="action" target="_blank" href="{{info_source}}">
-                        Find out more
-                        <span aria-hidden="true">
-                          →
-                        </span>
-                    </a>
-                </div>
+                    
+                {%endfor%}
+                    
                 <a id="send_mail"  href="{{url_for('send_mail')}}">
                     <span aria-hidden="true">
                         Click this if you want us to remind you about your pig's farrowing date?

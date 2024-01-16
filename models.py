@@ -1,115 +1,108 @@
-from config import db
+from config import db, generate_password_hash, check_password_hash, UserMixin
 
+# ---------------------------------------------Admin DB Tables----------------------------------------------------------
+
+
+class AdminModel(db.Model, UserMixin):
+    __tablename__ = 'admin'  # Change the table name
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.VARCHAR(255), nullable=False, unique=True)
+    hashed_password = db.Column(db.TEXT(), nullable=False)
+
+    @property
+    def password(self):
+        raise AttributeError('Password is not readable')
+
+    @password.setter
+    def password(self, password):
+        self.hashed_password = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.hashed_password, password)
+    
+    
+# ----------------------------------------End of Admin DB Tables-------------------------------------------------------- 
+    
 # --------------------------------------Symptom Analysis DB Tables------------------------------------------------------
 
 
-class DiseaseName(db.Model):
-    __tablename__ = 'disease_name'  # Change the table name
-    DN_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+class Diseases(db.Model):
+    __tablename__ = 'diseases'  # Change the table name
+    dn_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.VARCHAR(255), unique=True)
+    desc = db.Column(db.TEXT())
+    
+    symptom = db.relationship('DiseaseAndSymptom', backref='diseases_and_symptom', )
+    prevention = db.relationship('DiseaseAndPrevention', backref='disease_and_prevention')
+    treatment = db.relationship('DiseaseAndTreatment', backref='disease_and_treatment')
+    img = db.relationship('DiseaseAndImg', backref='disease_and_img')
 
 
 class Symptoms(db.Model):
     __tablename__ = 'symptoms'  # Change the table name
-    S_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    symptom = db.Column(db.VARCHAR(255), unique=True)
-
-
+    s_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.VARCHAR(255), unique=True) 
+       
+    symptoms = db.relationship('DiseaseAndSymptom', backref = 'disease_and_symptoms', )
+    
+    
 class Preventions(db.Model):
     __tablename__ = 'preventions'  # Change the table name
     P_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     prevention = db.Column(db.VARCHAR(255), unique=True)
-
+    
+    disease = db.relationship('DiseaseAndPrevention', backref = 'disease_and_preventions')
+    
 
 class DiseaseAndSymptom(db.Model):
     __tablename__ = 'disease_and_symptom'  # Change the table name
-    DS_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    disease_name = db.Column(db.VARCHAR(255), nullable=False, unique=True)
-    symptom = db.Column(db.VARCHAR(255))
-
-
+    ds_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    symptom = db.Column(db.VARCHAR(255), db.ForeignKey('symptoms.name', ondelete='CASCADE', onupdate='CASCADE'))
+    disease = db.Column(db.VARCHAR(255), db.ForeignKey('diseases.name', ondelete='CASCADE', onupdate='CASCADE'))
+    
+    
 class DiseaseAndPrevention(db.Model):
     __tablename__ = 'disease_and_prevention'  # Change the table name
-    DP_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    disease_name = db.Column(db.VARCHAR(255), nullable=False, unique=True)
-    prevention = db.Column(db.VARCHAR(255))
-
-
-class DiseaseAndDesc(db.Model):
-    __tablename__ = 'disease_and_desc'  # Change the table name
-    DD_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    disease_name = db.Column(db.VARCHAR(255))
-    desc = db.Column(db.TEXT())
+    dp_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease = db.Column(db.VARCHAR(255), db.ForeignKey('diseases.name', ondelete='CASCADE', onupdate='CASCADE'))
+    prevention = db.Column(db.VARCHAR(255), db.ForeignKey('preventions.prevention', ondelete='CASCADE', onupdate='CASCADE'))
 
 
 class DiseaseAndTreatment(db.Model):
     __tablename__ = 'disease_and_treatment'  # Change the table name
-    Dt_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    disease_name = db.Column(db.VARCHAR(255))
+    dt_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease = db.Column(db.VARCHAR(255), db.ForeignKey('diseases.name', ondelete='CASCADE', onupdate='CASCADE'))
     treatment = db.Column(db.TEXT())
 
 
 class DiseaseAndImg(db.Model):
     __tablename__ = 'disease_and_img'  # Change the table name
-    DI_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    disease_name = db.Column(db.VARCHAR(255))
-    img = db.Column(db.TEXT())
-    source = db.Column(db.TEXT())
+    di_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    disease = db.Column(db.VARCHAR(255), db.ForeignKey('diseases.name', ondelete='CASCADE', onupdate='CASCADE'))
+    img = db.Column(db.TEXT(), nullable=False)
+    img_credits = db.Column(db.TEXT())
 
 
 # --------------------------------------End of Symptom Analysis DB Tables-----------------------------------------------
 
-# ---------------------------------------------Nutrition DB Tables------------------------------------------------------
+# ------------------------------------------Post Content DB Tables------------------------------------------------------
 
 
-class AuthorNutritionInfo(db.Model):
-    __tablename__ = 'author_nutrition_info'  # Change the table name
+class PostContent(db.Model):
+    __tablename__ = 'post_content'  # Change the table name
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(500), nullable=False)
-    author = db.Column(db.String(500), nullable=False)
-    author_desc = db.Column(db.String(500), nullable=False)
+    type = db.Column(db.VARCHAR(255), nullable=False)
+    author = db.Column(db.VARCHAR(255), nullable=False)
+    header = db.Column(db.VARCHAR(255), nullable=False)
+    desc = db.Column(db.Text(), nullable=False)
+    source = db.Column(db.Text())
+    date = db.Column(db.Text())
+    img = db.Column(db.Text())
+    img_credits = db.Column(db.Text())
 
 
-class MainNutritionInfo(db.Model):
-    __tablename__ = 'main_nutrition_info'  # Change the table name
-    id = db.Column(db.Integer, primary_key=True)
-    header = db.Column(db.String(300), nullable=False)
-    desc = db.Column(db.Text(16383), nullable=False)
+# ----------------------------------------End of Post Content DB Tables-------------------------------------------------
 
-
-class SubNutritionInfo(db.Model):
-    __tablename__ = 'sub_nutrition_info'  # Change the table name
-    id = db.Column(db.Integer, primary_key=True)
-    sub_header = db.Column(db.String(300), nullable=False)
-    sub_desc = db.Column(db.String(5000), nullable=False)
-
-
-# ----------------------------------------End of Nutrition DB Tables----------------------------------------------------
-
-# ---------------------------------------------Facts DB Tables----------------------------------------------------------
-
-
-class FactsAboutPigs(db.Model):
-    __tablename__ = 'facts_about_pigs'  # Change the table name
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(300), nullable=False)
-    desc = db.Column(db.String(2000), nullable=False)
-
-
-# ---------------------------------------------End of Facts DB Tables---------------------------------------------------
-
-# ---------------------------------------------Types DB Tables----------------------------------------------------------
-
-
-class TypesOfPigs(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(250), nullable=False)
-    desc = db.Column(db.String(1500), nullable=False)
-    a = db.Column(db.String(1500), nullable=False)
-    img_url = db.Column(db.String(1500), nullable=False)
-
-
-# ---------------------------------------------End of Types DB Tables---------------------------------------------------
 
 # ------------------------------------------------News DB Tables--------------------------------------------------------
 
@@ -117,12 +110,12 @@ class TypesOfPigs(db.Model):
 class ScrapedNews(db.Model):
     __tablename__ = 'scraped_news'  # Change the table name
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(250), nullable=False)
-    title = db.Column(db.String(250), nullable=False)
-    date = db.Column(db.String(250), nullable=False)
-    desc = db.Column(db.String(400), nullable=False)
-    a = db.Column(db.String(1500), nullable=False)
-    img_url = db.Column(db.String(1500), nullable=False)
+    type = db.Column(db.VARCHAR(250), nullable=False)
+    title = db.Column(db.VARCHAR(250), nullable=False)
+    date = db.Column(db.VARCHAR(250), nullable=False)
+    desc = db.Column(db.VARCHAR(400), nullable=False)
+    a = db.Column(db.VARCHAR(1500), nullable=False)
+    img_url = db.Column(db.VARCHAR(1500), nullable=False)
 
 
 # -----------------------------------------------End of News DB Tables--------------------------------------------------
@@ -134,12 +127,12 @@ class ScrapedNews(db.Model):
 class Prices(db.Model):
     __tablename__ = 'prices'  # Change the table name
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(250), nullable=False)
-    price = db.Column(db.String(250), nullable=False)
-    date_of_price = db.Column(db.String(250), nullable=False)
-    header = db.Column(db.String(150), nullable=False)
-    a = db.Column(db.String(150), nullable=False)
-    href = db.Column(db.String(1000), nullable=False)
+    type = db.Column(db.VARCHAR(250), nullable=False)
+    price = db.Column(db.VARCHAR(250), nullable=False)
+    date_of_price = db.Column(db.VARCHAR(250), nullable=False)
+    header = db.Column(db.VARCHAR(150), nullable=False)
+    a = db.Column(db.VARCHAR(150), nullable=False)
+    href = db.Column(db.VARCHAR(1000), nullable=False)
 
 
 # -----------------------------------------------End of Prices DB Tables------------------------------------------------
