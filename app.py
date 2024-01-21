@@ -361,7 +361,8 @@ def admin_edit_symptom(disease):
     return render_template('admin/control/symptom/admin_edit_symptom.html', selected=selected,
                         form=form,                           
                         image_filenames=image_filenames,
-                        filename_credits_dict=filename_credits_dict)
+                        filename_credits_dict=filename_credits_dict,
+                        disease=disease)
    
         
 @app.route('/admin/symptom/edit/delete/<filename>/<filename_credits_dict>', methods=['GET', 'POST'])

@@ -8,11 +8,10 @@
                         <h1>
                             {{fact.header}}
                         </h1>
+                        <p class="author">By: {{fact.author}}, {{fact.date}}</p> 
                     </div>
                     <div class="L-transparent-card fact-card info-card">
-                        <div>
-                            <p>By: {{fact.author}}, {{fact.date}}</p>
-                        </div>
+                        
                         <div class="desc">
                             {{fact.desc}}
                         </div>
@@ -20,14 +19,16 @@
                             <p>Credits: {{fact.source}}</p>
                         </div>
                     </div>
-                    <div class="L-transparent-card info-card info-card-img ">
-                        <img src="{{ url_for('static', filename='img/' + fact.img ) }}" alt="" class="disease-img"> 
-                        {%if fact.img_credits%}
-                            <p>Source: {{fact.img_credits}}</p>
-                        {%else%}
-                            <p>Image source: Not Available</p>
-                        {%endif%}
-                    </div>
+                    {%if fact.img%}
+                        <div class="L-transparent-card info-card info-card-img ">
+                            <img src="{{ url_for('static', filename='img/' + fact.img ) }}" alt="" class="disease-img"> 
+                            {%if fact.img_credits%}
+                                <p>Source: {{fact.img_credits}}</p>
+                            {%else%}
+                                <p>Source: Not Available</p>
+                            {%endif%}
+                        </div>
+                    {%endif%}
                 {%endfor%}
             </section>
         </div>

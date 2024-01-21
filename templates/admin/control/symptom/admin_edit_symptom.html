@@ -6,7 +6,7 @@
 
   <section class="content">
     <div class="section-title">
-        Add disease information
+        Edit {{disease}}
       </div>
     <div class="dashboard L-transparent-card">        
 
@@ -51,7 +51,7 @@
             <br>
             <br>
             {{form.img_credits}}
-            {{form.add_image}}
+            {{form.add_image(class="btn")}}
             <br>
             <br>
             <div class="admin-img-container">
@@ -80,7 +80,7 @@
             </div>
           </div>
           <div class="group-btn">
-            {{form.submit_all(class="ui-btn")}}
+            {{form.save_edit(class="ui-btn")}}
               <a href="{{url_for('admin_symptom')}}" class="ui-btn">
                 Go back
               </a>

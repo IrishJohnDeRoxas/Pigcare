@@ -2,17 +2,16 @@
 {%block main%}
     <div class="content">
         <div class="nutritions-container L-container">
-            <section class="nutrition">
+            <section class="nutritions">
                 {% for nutrition in nutrition_posts %}
                     <div class="section-title">
                         <h1>
                             {{nutrition.header}}
                         </h1>
+                        <p class="author">By: {{nutrition.author}}, {{nutrition.date}}</p> 
                     </div>
                     <div class="L-transparent-card nutrition-card info-card">
-                        <div>
-                            <p>By: {{nutrition.author}}, {{nutrition.date}}</p>
-                        </div>
+                        
                         <div class="desc">
                             {{nutrition.desc}}
                         </div>
@@ -20,14 +19,16 @@
                             <p>Credits: {{nutrition.source}}</p>
                         </div>
                     </div>
-                    <div class="L-transparent-card info-card info-card-img ">
-                        <img src="{{ url_for('static', filename='img/' + nutrition.img ) }}" alt="" class="disease-img"> 
-                        {%if nutrition.img_credits%}
-                            <p>Source: {{nutrition.img_credits}}</p>
-                        {%else%}
-                            <p>Image source: Not Available</p>
-                        {%endif%}
-                    </div>
+                    {%if nutrition.img%}
+                        <div class="L-transparent-card info-card info-card-img ">
+                            <img src="{{ url_for('static', filename='img/' + nutrition.img ) }}" alt="" class="disease-img"> 
+                            {%if nutrition.img_credits%}
+                                <p>Source: {{nutrition.img_credits}}</p>
+                            {%else%}
+                                <p>Source: Not Available</p>
+                            {%endif%}
+                        </div>
+                    {%endif%}
                 {%endfor%}
             </section>
         </div>

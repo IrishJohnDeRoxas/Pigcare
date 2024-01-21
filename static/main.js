@@ -57,7 +57,7 @@ function confirmDelete(item) {
 var option_1 = document.querySelector('.option-1')
 var option_2 = document.querySelector('.option-2')
 var option_1_value = document.querySelector('.option-1-value')
-var option_2_value = document.getElementById('.option-2-value')
+var option_2_value = document.querySelector('.option-2-value')
 
 
 if (option_1){
@@ -65,7 +65,7 @@ if (option_1){
     option_1.classList.remove('active')
     option_2.classList.remove('active')
     option_1_value.classList.remove('hide')
-    option_2_value.classList.remove('show')
+    option_2_value.classList.toggle('show')
   })
 }
 
@@ -74,7 +74,7 @@ if (option_1){
       option_1.classList.add('active')
       option_2.classList.add('active')
       option_1_value.classList.add('hide')
-      option_2_value.classList.add('show')
+      option_2_value.classList.toggle('show')
     })
   }
 

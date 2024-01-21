@@ -75,7 +75,7 @@
                     {% for admin_news in admin_news_posts %}
                     <div class="transparent-card news-card">
                         <div class="image">
-                            <img src="{{admin_news.img}}" alt="PigCare">
+                            <img src="{{ url_for('static', filename='img/' + admin_news.img ) }}" alt="Pigcare">
                         </div>
                         <div class="card-body">
                         <a href="#"  target="_blank" >

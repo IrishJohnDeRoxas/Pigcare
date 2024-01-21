@@ -598,7 +598,7 @@ li.active {
 }
 
 .info-card-img {
-    width: 15%;
+    width: 19%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -731,8 +731,12 @@ li.active {
 }
 
 .option-2-value{
-    display: flex;
+    display: none;
     width: 88%;
+}
+
+.option-2-value .info-card-img{
+    width: 30%;
 }
 
 .option-2-value.show{
@@ -893,7 +897,7 @@ li.active {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 20%;
+    margin-top: 8%;
 }
 
 .price-card {
@@ -1012,9 +1016,16 @@ li.active {
     border-bottom: solid white 1px;
     color: var(--bs-white);
     width: 90%;
-    height: 2.4em;
-    margin-bottom: 20px;
+    height: auto;
+    margin-top: 2%;
     font-size: 2em;
+    padding-bottom: 2%;
+}
+
+.author{
+    font-size: 70%;
+    color: var(--bs-gray-900);
+    text-indent: 10px;
 }
 
 section {
@@ -1026,6 +1037,8 @@ section {
     flex-wrap: wrap;
     gap: 40px;
 }
+
+
 
 .dashboard {
     color: var(--bs-gray-100);
@@ -1149,3 +1162,4 @@ textarea{
     border-color:4px var(--bs-blue);
     outline: none;
 }
+
